@@ -7,10 +7,12 @@ import { LmsModule } from './lms/lms.module';
 import { AssessmentsModule } from './assessments/assessments.module';
 import { GradesModule } from './grades/grades.module';
 import { CertificatesModule } from './certificates/certificates.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
     PrismaModule,
+    HealthModule,
     AuthModule,
     ServicesModule,
     BookingModule,

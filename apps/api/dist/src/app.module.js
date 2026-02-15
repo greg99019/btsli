@@ -16,6 +16,7 @@ const lms_module_1 = require("./lms/lms.module");
 const assessments_module_1 = require("./assessments/assessments.module");
 const grades_module_1 = require("./grades/grades.module");
 const certificates_module_1 = require("./certificates/certificates.module");
+const health_module_1 = require("./health/health.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -23,6 +24,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             prisma_module_1.PrismaModule,
+            health_module_1.HealthModule,
             auth_module_1.AuthModule,
             services_module_1.ServicesModule,
             booking_module_1.BookingModule,
