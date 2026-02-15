@@ -6,9 +6,9 @@ const app_module_1 = require("./app.module");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({ origin: true, credentials: true });
-    const port = process.env.API_PORT ? Number(process.env.API_PORT) : 4000;
+    const port = process.env.PORT ? Number(process.env.PORT) : (process.env.API_PORT ? Number(process.env.API_PORT) : 4000);
     await app.listen(port);
-    console.log(`API running on http://localhost:${port}`);
+    console.log(`API running on port ${port}`);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
