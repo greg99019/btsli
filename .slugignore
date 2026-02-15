@@ -1,0 +1,6 @@
+# Tell Heroku what to exclude from the slug
+# Note: The dist folder should be included (built during deployment)
+node_modules/
+.git/
+*.log
+*.md

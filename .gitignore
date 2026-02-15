@@ -12,7 +12,7 @@ apps/web/out/
 
 # Production
 build/
-dist/
+# dist/ - removed to allow Heroku builds
 
 # Misc
 .DS_Store
