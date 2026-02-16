@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { apiGet, apiPost } from '@/lib/api';
 
 type Lesson = {
@@ -18,6 +19,7 @@ function token() {
 }
 
 export default function LessonPage({ params }: { params: { lessonId: string } }) {
+  const router = useRouter();
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [nextLessonId, setNextLessonId] = useState<string | null>(null);
   const [err, setErr] = useState('');
@@ -56,6 +58,15 @@ export default function LessonPage({ params }: { params: { lessonId: string } })
 
   return (
     <div style={{ display: 'grid', gap: 12 }}>
+      <button
+        onClick={() => router.back()}
+        className="flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium transition-colors"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back
+      </button>
       <h1>{lesson.title}</h1>
 
       {lesson.type === 'VIDEO' && lesson.videoUrl ? (

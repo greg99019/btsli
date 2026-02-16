@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { apiGet, apiPost } from '@/lib/api';
 
 type Assessment = {
@@ -14,6 +15,7 @@ function token() {
 }
 
 export default function AssessmentPage({ params }: { params: { assessmentId: string } }) {
+  const router = useRouter();
   const [assessment, setAssessment] = useState<Assessment | null>(null);
   const [attemptId, setAttemptId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -55,6 +57,15 @@ export default function AssessmentPage({ params }: { params: { assessmentId: str
 
   return (
     <div style={{ display: 'grid', gap: 12 }}>
+      <button
+        onClick={() => router.back()}
+        className="flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium transition-colors"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back
+      </button>
       <h1>{assessment.title}</h1>
 
       {!attemptId ? <button onClick={start}>Start attempt</button> : <p>Attempt started.</p>}

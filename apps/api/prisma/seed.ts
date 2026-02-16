@@ -1,8 +1,39 @@
-import { PrismaClient, ServiceCategory } from '@prisma/client';
+import { PrismaClient, ServiceCategory, Role } from '@prisma/client';
+import * as bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
 async function main() {
+  // Create demo users
+  const demoPassword = await bcrypt.hash('Demo123!', 10);
+  
+  const demoClient = await prisma.user.upsert({
+    where: { email: 'demo@btsli.com' },
+    update: {},
+    create: {
+      email: 'demo@btsli.com',
+      name: 'Demo Client',
+      passwordHash: demoPassword,
+      role: Role.CLIENT,
+    },
+  });
+
+  const demoCoach = await prisma.user.upsert({
+    where: { email: 'coach@btsli.com' },
+    update: {},
+    create: {
+      email: 'coach@btsli.com',
+      name: 'Demo Coach',
+      passwordHash: demoPassword,
+      role: Role.COACH,
+    },
+  });
+
+  console.log(`✅ Created demo accounts:`);
+  console.log(`   Client: demo@btsli.com / Demo123!`);
+  console.log(`   Coach: coach@btsli.com / Demo123!`);
+  console.log('');
+
   const services = [
     {
       name: 'Individual Coaching Session (Non Clinical)',
@@ -111,6 +142,267 @@ async function main() {
   }
 
   console.log(`Seeded ${services.length} services.`);
+  console.log('');
+
+  // Create sample courses
+  const traumaLeadershipCourse = await prisma.course.upsert({
+    where: { id: 'course-trauma-leadership-101' },
+    update: {},
+    create: {
+      id: 'course-trauma-leadership-101',
+      title: 'Trauma-Informed Leadership Fundamentals',
+      description: 'Learn the core principles of trauma-informed leadership to create safer, more effective workplace environments.',
+      published: true,
+    },
+  });
+
+  const communicationCourse = await prisma.course.upsert({
+    where: { id: 'course-communication-skills' },
+    update: {},
+    create: {
+      id: 'course-communication-skills',
+      title: 'Effective Communication Skills',
+      description: 'Master essential communication techniques for professional and personal growth.',
+      published: true,
+    },
+  });
+
+  const emotionalIntCourse = await prisma.course.upsert({
+    where: { id: 'course-emotional-intelligence' },
+    update: {},
+    create: {
+      id: 'course-emotional-intelligence',
+      title: 'Emotional Intelligence for Leaders',
+      description: 'Develop your emotional intelligence to lead with empathy and effectiveness.',
+      published: true,
+    },
+  });
+
+  console.log(`✅ Created ${3} courses`);
+  console.log('');
+
+  // Create modules and lessons for Trauma-Informed Leadership course
+  const module1 = await prisma.module.upsert({
+    where: { id: 'mod-til-intro' },
+    update: {},
+    create: {
+      id: 'mod-til-intro',
+      courseId: traumaLeadershipCourse.id,
+      title: 'Introduction to Trauma-Informed Leadership',
+      sortOrder: 1,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-til-welcome' },
+    update: {},
+    create: {
+      id: 'lesson-til-welcome',
+      moduleId: module1.id,
+      title: 'Welcome to Trauma-Informed Leadership',
+      description: 'An introduction to the course and what you will learn',
+      type: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      sortOrder: 1,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-til-foundations' },
+    update: {},
+    create: {
+      id: 'lesson-til-foundations',
+      moduleId: module1.id,
+      title: 'Understanding Trauma in the Workplace',
+      description: 'Learn how trauma affects behavior and performance in professional settings',
+      type: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      sortOrder: 2,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-til-principles' },
+    update: {},
+    create: {
+      id: 'lesson-til-principles',
+      moduleId: module1.id,
+      title: 'Core Principles of Trauma-Informed Care',
+      description: 'Explore the six key principles: safety, trustworthiness, peer support, collaboration, empowerment, and cultural sensitivity',
+      type: 'READING',
+      readingHtml: '<h2>Six Core Principles</h2><ol><li><strong>Safety</strong> - Creating physical and emotional safety</li><li><strong>Trustworthiness & Transparency</strong> - Building trust through consistency</li><li><strong>Peer Support</strong> - Fostering connection and mutual support</li><li><strong>Collaboration & Mutuality</strong> - Sharing power and decision-making</li><li><strong>Empowerment & Choice</strong> - Recognizing strengths and autonomy</li><li><strong>Cultural Sensitivity</strong> - Honoring diversity and context</li></ol>',
+      sortOrder: 3,
+    },
+  });
+
+  const module2 = await prisma.module.upsert({
+    where: { id: 'mod-til-practice' },
+    update: {},
+    create: {
+      id: 'mod-til-practice',
+      courseId: traumaLeadershipCourse.id,
+      title: 'Putting It Into Practice',
+      sortOrder: 2,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-til-communication' },
+    update: {},
+    create: {
+      id: 'lesson-til-communication',
+      moduleId: module2.id,
+      title: 'Trauma-Informed Communication Strategies',
+      description: 'Learn how to communicate in ways that promote safety and build trust',
+      type: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      sortOrder: 1,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-til-boundaries' },
+    update: {},
+    create: {
+      id: 'lesson-til-boundaries',
+      moduleId: module2.id,
+      title: 'Setting Healthy Boundaries',
+      description: 'Understand how to establish and maintain appropriate boundaries as a leader',
+      type: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      sortOrder: 2,
+    },
+  });
+
+  // Create modules and lessons for Communication Skills course
+  const commModule1 = await prisma.module.upsert({
+    where: { id: 'mod-comm-basics' },
+    update: {},
+    create: {
+      id: 'mod-comm-basics',
+      courseId: communicationCourse.id,
+      title: 'Communication Basics',
+      sortOrder: 1,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-comm-active-listening' },
+    update: {},
+    create: {
+      id: 'lesson-comm-active-listening',
+      moduleId: commModule1.id,
+      title: 'Active Listening Skills',
+      description: 'Master the art of truly hearing what others are saying',
+      type: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      sortOrder: 1,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-comm-nonverbal' },
+    update: {},
+    create: {
+      id: 'lesson-comm-nonverbal',
+      moduleId: commModule1.id,
+      title: 'Non-Verbal Communication',
+      description: 'Understanding body language, tone, and other non-verbal cues',
+      type: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      sortOrder: 2,
+    },
+  });
+
+  // Create modules and lessons for Emotional Intelligence course
+  const eiModule1 = await prisma.module.upsert({
+    where: { id: 'mod-ei-intro' },
+    update: {},
+    create: {
+      id: 'mod-ei-intro',
+      courseId: emotionalIntCourse.id,
+      title: 'Introduction to Emotional Intelligence',
+      sortOrder: 1,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-ei-self-awareness' },
+    update: {},
+    create: {
+      id: 'lesson-ei-self-awareness',
+      moduleId: eiModule1.id,
+      title: 'Developing Self-Awareness',
+      description: 'Learn to recognize and understand your own emotions',
+      type: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      sortOrder: 1,
+    },
+  });
+
+  await prisma.lesson.upsert({
+    where: { id: 'lesson-ei-empathy' },
+    update: {},
+    create: {
+      id: 'lesson-ei-empathy',
+      moduleId: eiModule1.id,
+      title: 'Building Empathy',
+      description: 'Strengthen your ability to understand and relate to others',
+      type: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      sortOrder: 2,
+    },
+  });
+
+  console.log(`✅ Created modules and lessons (10 video lessons, 1 reading lesson)`);
+  console.log('');
+
+  // Enroll demo user in all courses
+  await prisma.enrollment.upsert({
+    where: {
+      userId_courseId: {
+        userId: demoClient.id,
+        courseId: traumaLeadershipCourse.id,
+      },
+    },
+    update: {},
+    create: {
+      userId: demoClient.id,
+      courseId: traumaLeadershipCourse.id,
+    },
+  });
+
+  await prisma.enrollment.upsert({
+    where: {
+      userId_courseId: {
+        userId: demoClient.id,
+        courseId: communicationCourse.id,
+      },
+    },
+    update: {},
+    create: {
+      userId: demoClient.id,
+      courseId: communicationCourse.id,
+    },
+  });
+
+  await prisma.enrollment.upsert({
+    where: {
+      userId_courseId: {
+        userId: demoClient.id,
+        courseId: emotionalIntCourse.id,
+      },
+    },
+    update: {},
+    create: {
+      userId: demoClient.id,
+      courseId: emotionalIntCourse.id,
+    },
+  });
+
+  console.log(`✅ Enrolled demo user in ${3} courses`);
+  console.log('');
+  console.log('🎉 Seed complete! Demo user can now access courses and video lessons.');
 }
 
 main()

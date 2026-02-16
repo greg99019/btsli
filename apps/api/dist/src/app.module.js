@@ -17,6 +17,7 @@ const assessments_module_1 = require("./assessments/assessments.module");
 const grades_module_1 = require("./grades/grades.module");
 const certificates_module_1 = require("./certificates/certificates.module");
 const health_module_1 = require("./health/health.module");
+const admin_module_1 = require("./admin/admin.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -32,6 +33,7 @@ exports.AppModule = AppModule = __decorate([
             assessments_module_1.AssessmentsModule,
             grades_module_1.GradesModule,
             certificates_module_1.CertificatesModule,
+            admin_module_1.AdminModule,
         ],
     })
 ], AppModule);

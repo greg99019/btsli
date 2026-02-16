@@ -1,5 +1,5 @@
 {
-  "name": "@btsli/api",
+  "name": "btsli-api",
   "private": true,
   "scripts": {
     "dev": "nest start --watch",
