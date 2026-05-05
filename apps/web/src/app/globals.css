@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen;
   }
@@ -18,7 +22,7 @@
   }
   
   .card {
-    @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-white/20;
+    @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 border border-white/20;
   }
 
   .scrollbar-hide {
