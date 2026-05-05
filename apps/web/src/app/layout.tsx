@@ -4,8 +4,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <title>BTSLI - Professional Coaching for Leadership & Personal Growth</title>
-        <meta name="description" content="Trauma-informed professional coaching for leaders, professionals, and families. Transform how you communicate, lead, and navigate life's challenges with compassionate support." />
+        <title>BTSLI™ - Behavioral Systems Consulting for Performance & Clarity</title>
+        <meta name="description" content="Beyond The Surface Leadership Institute™ provides evidence-informed consulting, training, and systems development that increases operational consistency, strengthens leadership execution, and improves organizational performance." />
       </head>
       <body>
         <header className="bg-white/70 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-blue-100">
@@ -17,20 +17,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
                 <div>
                   <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                    BTSLI Coaching
+                    BTSLI™
                   </div>
-                  <div className="text-xs text-gray-500 -mt-0.5">Trauma-Informed Leadership</div>
+                  <div className="text-xs text-gray-500 -mt-0.5">Behavioral Systems Consulting</div>
                 </div>
               </a>
               <div className="flex gap-6 flex-wrap items-center">
                 <a href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a>
                 <a href="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a>
-                <a href="/services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Coaching</a>
+                <a href="/services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a>
                 <a href="/resources" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Resources</a>
-                <a href="/dashboard" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Dashboard</a>
+                <a href="/dashboard" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Client Portal</a>
                 <a href="/login" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Login</a>
                 <a href="/schedule" className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-medium hover:shadow-lg transition-all">
-                  Book a Call
+                  Schedule Consultation
                 </a>
               </div>
             </div>
@@ -41,48 +41,49 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-7xl mx-auto px-6 py-12">
             <div className="grid md:grid-cols-4 gap-8">
               <div>
-                <h3 className="text-lg font-bold mb-3">BTSLI Coaching</h3>
+                <h3 className="text-lg font-bold mb-3">Beyond The Surface Leadership Institute™</h3>
                 <p className="text-blue-200 text-sm mb-3">
-                  Professional, trauma-informed coaching for meaningful change.
+                  Behavioral Systems Consulting for Performance, Clarity, and Consistent Execution
                 </p>
                 <p className="text-blue-300 text-sm italic">
-                  "Beyond the surface lies your true potential."
+                  "System-centered clarity. Sustainable performance."
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-bold mb-4">Coaching</h3>
+                <h3 className="text-lg font-bold mb-4">Services</h3>
                 <div className="space-y-2 text-blue-200 text-sm">
-                  <a href="/services" className="block hover:text-white transition-colors">1-on-1 Coaching</a>
-                  <a href="/services" className="block hover:text-white transition-colors">Team Coaching</a>
-                  <a href="/services" className="block hover:text-white transition-colors">Family Coaching</a>
-                  <a href="/services" className="block hover:text-white transition-colors">Organizational Training</a>
+                  <a href="/services" className="block hover:text-white transition-colors">Behavioral Systems Consulting</a>
+                  <a href="/services" className="block hover:text-white transition-colors">Program Development</a>
+                  <a href="/services" className="block hover:text-white transition-colors">Workforce Development</a>
+                  <a href="/services" className="block hover:text-white transition-colors">Staff Training</a>
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-bold mb-4">Resources</h3>
+                <h3 className="text-lg font-bold mb-4">Organizations</h3>
                 <div className="space-y-2 text-blue-200 text-sm">
-                  <a href="/resources" className="block hover:text-white transition-colors">Articles & Guides</a>
-                  <a href="/about" className="block hover:text-white transition-colors">Meet Your Coach</a>
-                  <a href="/about" className="block hover:text-white transition-colors">Coaching Approach</a>
-                  <a href="/login" className="block hover:text-white transition-colors">Client Portal</a>
+                  <a href="/" className="block hover:text-white transition-colors">Schools & Districts</a>
+                  <a href="/" className="block hover:text-white transition-colors">Nonprofits</a>
+                  <a href="/" className="block hover:text-white transition-colors">Government Agencies</a>
+                  <a href="/" className="block hover:text-white transition-colors">Corporate Teams</a>
                 </div>
               </div>
               <div>
                 <h3 className="text-lg font-bold mb-4">Get Started</h3>
                 <p className="text-blue-200 mb-3 text-sm">
-                  Ready to begin your coaching journey?
+                  Ready to improve organizational performance?
                 </p>
                 <a href="/schedule" className="inline-block px-5 py-2.5 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-lg transition-all text-sm">
-                  Schedule Free Discovery Call
+                  Schedule Consultation
                 </a>
-                <p className="text-blue-300 text-xs mt-3">
-                  💬 Virtual & in-person sessions available
-                </p>
+                <div className="mt-4 space-y-1">
+                  <p className="text-blue-300 text-xs">WOSB Certified</p>
+                  <p className="text-blue-300 text-xs">EDWOSB Certified</p>
+                </div>
               </div>
             </div>
             <div className="border-t border-blue-800 mt-8 pt-8 text-center text-blue-300">
-              <p className="text-sm">&copy; 2026 BTSLI - Beyond the Surface Leadership Institute. All rights reserved.</p>
-              <p className="text-xs mt-2">Professional coaching • Trauma-informed approach • ICF-aligned practices</p>
+              <p className="text-sm">&copy; 2026 Beyond The Surface Leadership Institute™, LLC. All rights reserved.</p>
+              <p className="text-xs mt-2">Evidence-informed consulting • Systems development • Performance-driven outcomes</p>
             </div>
           </div>
         </footer>
