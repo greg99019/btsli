@@ -614,7 +614,9 @@ export default function DashboardPage() {
                     </div>
                     <div className="relative">
                       <div 
-                        ref={(el) => scrollRefs.current['continue-learning'] = el}
+                        ref={(el) => {
+                          scrollRefs.current['continue-learning'] = el;
+                        }}
                         className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth scrollbar-hide"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                       >
@@ -761,7 +763,9 @@ export default function DashboardPage() {
                       {/* Category Videos Carousel */}
                       <div className="relative group/carousel">
                         <div 
-                          ref={(el) => scrollRefs.current[category] = el}
+                          ref={(el) => {
+                            scrollRefs.current[category] = el;
+                          }}
                           className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth scrollbar-hide"
                           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
