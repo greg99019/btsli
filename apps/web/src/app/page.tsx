@@ -7,120 +7,164 @@ export default function Home() {
         <div 
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop)',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/85 to-slate-800/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/85 via-cyan-900/80 to-blue-800/85"></div>
         </div>
         
         {/* Content */}
-        <div className="relative z-10 text-center space-y-6 max-w-6xl mx-auto">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg">
+        <div className="relative z-10 text-center space-y-6 max-w-5xl mx-auto">
+          <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium text-sm mb-4 border border-white/30">
+            ✨ Systems-Based Consulting for Meaningful Change
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight drop-shadow-lg">
             Behavioral Systems Consulting for Performance, Clarity, and Consistent Execution
           </h1>
-          <h2 className="text-2xl md:text-3xl text-white/95 max-w-5xl mx-auto font-medium drop-shadow-md">
-            Beyond The Surface Leadership Institute™, LLC (BTSLI™) designs and implements structured, behavior-based systems that improve communication, strengthen leadership, and increase performance across organizations, workforce programs, educational environments, and high-accountability systems.
+          <h2 className="text-2xl md:text-3xl text-white/95 max-w-4xl mx-auto font-normal drop-shadow-md">
+            Beyond The Surface Leadership Institute™ designs and implements structured, behavior-based systems that improve communication, strengthen leadership, and increase performance across organizations.
           </h2>
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 max-w-4xl mx-auto text-left">
-            <p className="text-lg text-white/95 leading-relaxed mb-4">
-              We work with organizations experiencing breakdowns in communication, inconsistency in performance, lack of follow-through, and unclear expectations.
-            </p>
-            <p className="text-lg text-white/95 leading-relaxed mb-4">
-              Our approach focuses on building structured systems that support:
-            </p>
-            <ul className="grid md:grid-cols-2 gap-3 text-white/90 mb-6">
-              <li className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-cyan-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Clear communication</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-cyan-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Defined expectations</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-cyan-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Consistent execution</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-cyan-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Measurable outcomes</span>
-              </li>
-            </ul>
-            <p className="text-white/90 italic text-center text-base">
-              We do not provide temporary solutions. We design structured systems intended to support consistent, sustainable performance over time.
+          <p className="text-lg text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow">
+            We work with organizations experiencing breakdowns in communication, inconsistency in performance, 
+            lack of follow-through, and unclear expectations.
+          </p>
+          <div className="flex gap-4 justify-center flex-wrap pt-4">
+            <a href="/schedule" className="btn-primary text-lg px-8 py-4 shadow-2xl">
+              Schedule a Free Consultation
+            </a>
+            <a href="/about" className="px-8 py-4 bg-white/95 text-blue-600 font-semibold rounded-lg shadow-xl hover:shadow-2xl hover:bg-white transition-all text-lg hover:scale-105">
+              Learn About Our Approach
+            </a>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="flex justify-center items-center gap-8 flex-wrap pt-8 text-sm text-white/90">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <svg className="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span>Evidence-Informed Methods</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <svg className="w-5 h-5 text-blue-300" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span>WOSB & EDWOSB Certified</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <svg className="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+              </svg>
+              <span>Doctoral-Level Leadership</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How Our Consulting Works */}
+      <section className="card bg-gradient-to-br from-blue-50 to-cyan-50">
+        <h2 className="text-3xl font-bold text-gray-800 mb-3 text-center">How Our Consulting Works</h2>
+        <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+          Our approach is collaborative, structured, and results-oriented. Here's what to expect when you partner with BTSLI™:
+        </p>
+        <div className="grid md:grid-cols-4 gap-6">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+              1
+            </div>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Initial Consultation</h3>
+            <p className="text-gray-600 text-sm">
+              We'll discuss your organizational challenges, goals, and identify where systems need strengthening. No pressure, just conversation.
             </p>
           </div>
-          <div className="pt-6">
-            <a href="/schedule" className="inline-block px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-white text-xl font-bold rounded-lg shadow-2xl hover:shadow-cyan-500/50 transition-all hover:scale-105">
-              Contact BTSLI™ to Schedule a Consultation
-            </a>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+              2
+            </div>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Systems Assessment</h3>
+            <p className="text-gray-600 text-sm">
+              Together, we'll analyze current systems, identify breakdowns, and design tailored solutions aligned with your real-world conditions.
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+              3
+            </div>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Implementation Support</h3>
+            <p className="text-gray-600 text-sm">
+              We provide structured training, implementation guidance, and ongoing support to ensure sustainable, consistent performance improvements.
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+              4
+            </div>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Measure & Refine</h3>
+            <p className="text-gray-600 text-sm">
+              Track outcomes, celebrate progress, and adjust systems as needed. Our approach evolves with your organization.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Vision, Mission & Values */}
       <section className="grid lg:grid-cols-3 gap-8">
-        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200">
+        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 group hover:border-blue-300">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
               <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-800">Vision</h3>
+            <h3 className="text-2xl font-bold text-gray-800">Our Vision</h3>
           </div>
           <p className="text-gray-700 leading-relaxed">
             To strengthen organizational performance through system-centered clarity, stability, and aligned purpose—ensuring consistent execution across conditions of complexity and change.
           </p>
         </div>
 
-        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200">
+        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 group hover:border-blue-300">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
               <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-800">Mission</h3>
+            <h3 className="text-2xl font-bold text-gray-800">Our Mission</h3>
           </div>
           <p className="text-gray-700 leading-relaxed">
-            Beyond The Surface Leadership Institute™ provides evidence-informed consulting, training, and systems development that increases operational consistency, strengthens leadership execution, and improves organizational performance through clearer structures and aligned decision-making.
+            Beyond The Surface Leadership Institute™ provides evidence-informed consulting, training, and systems development that increases operational consistency, strengthens leadership execution, and improves organizational performance.
           </p>
         </div>
 
-        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 lg:col-span-1">
+        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 lg:col-span-1 group hover:border-blue-300">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-500 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
               <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.9 02 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-800">Values</h3>
+            <h3 className="text-2xl font-bold text-gray-800">Our Values</h3>
           </div>
-          <ul className="space-y-3 text-gray-700">
-            <li><span className="font-bold text-blue-700">Integrity:</span> Uncompromising ethical clarity, truth, and transparency</li>
-            <li><span className="font-bold text-blue-700">Urgency:</span> Disciplined speed with purpose and precision</li>
-            <li><span className="font-bold text-blue-700">Excellence:</span> Evaluator-ready, evidence-informed solutions</li>
-            <li><span className="font-bold text-blue-700">Contextual Fit:</span> Systems matching real operating conditions</li>
-            <li><span className="font-bold text-blue-700">Stability:</span> Foundation for performance without unnecessary stress</li>
+          <ul className="space-y-2 text-gray-700 text-sm">
+            <li><span className="font-bold text-blue-700">Integrity:</span> Ethical clarity and transparency</li>
+            <li><span className="font-bold text-blue-700">Urgency:</span> Disciplined speed with precision</li>
+            <li><span className="font-bold text-blue-700">Excellence:</span> Evidence-informed solutions</li>
+            <li><span className="font-bold text-blue-700">Contextual Fit:</span> Real-world alignment</li>
+            <li><span className="font-bold text-blue-700">Stability:</span> Foundation for performance</li>
           </ul>
         </div>
       </section>
 
-      {/* SECTION 2 - ABOUT THE ORGANIZATION */}
-      <section className="card bg-gradient-to-br from-slate-50 to-blue-50">
-        <h2 className="text-4xl font-bold text-gray-800 mb-6 text-center">About Beyond The Surface Leadership Institute™</h2>
+      {/* About the Organization */}
+      <section className="card bg-gradient-to-br from-blue-50 to-cyan-50">
+        <h2 className="text-3xl font-bold text-gray-800 mb-3 text-center">About Beyond The Surface Leadership Institute™</h2>
+        <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+          We're a Behavioral Systems Consulting firm founded on evidence-informed practices, dedicated to helping organizations thrive.
+        </p>
         <div className="max-w-5xl mx-auto space-y-6 text-gray-700 leading-relaxed">
           <p className="text-lg">
             <strong>Beyond The Surface Leadership Institute™, LLC (BTSLI™)</strong> is a Behavioral Systems Consulting firm founded by Dr. Audrea Knight-Nwosu, a behavioral science practitioner and systems architect with doctoral-level training in psychology, organizational behavior, and applied performance systems. She serves as Founder and Chief Executive Officer of the Institute.
@@ -159,81 +203,81 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 3 - WHY ORGANIZATIONS CHOOSE BTSLI */}
-      <section className="card bg-gradient-to-br from-blue-600 to-cyan-600 text-white border-none">
-        <h2 className="text-4xl font-bold mb-6 text-center">Why Organizations Choose BTSLI™</h2>
-        <p className="text-xl text-center mb-10 max-w-4xl mx-auto text-blue-50">
-          Organizations choose BTSLI™ because we deliver high-impact consulting and training designed for real-world application—not just knowledge transfer.
+      {/* Why Organizations Choose Us */}
+      <section className="card bg-gradient-to-br from-blue-50 to-cyan-50">
+        <h2 className="text-3xl font-bold text-gray-800 mb-3 text-center">Why Organizations Choose BTSLI™</h2>
+        <p className="text-center text-gray-600 mb-10 max-w-3xl mx-auto">
+          Organizations partner with us because we deliver high-impact consulting designed for real-world application—not just knowledge transfer.
         </p>
         
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+          <div className="bg-white p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-2">Correcting breakdowns in communication, follow-through, or accountability</h3>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">Correcting breakdowns in communication, follow-through, or accountability</h3>
               </div>
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+          <div className="bg-white p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-2">Strengthening operations to improve consistency and efficiency</h3>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">Strengthening operations to improve consistency and efficiency</h3>
               </div>
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+          <div className="bg-white p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-2">Addressing staff burnout and high turnover</h3>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">Addressing staff burnout and high turnover</h3>
               </div>
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+          <div className="bg-white p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-2">Preparing for growth, expansion, or leadership transition</h3>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">Preparing for growth, expansion, or leadership transition</h3>
               </div>
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 md:col-span-2">
+          <div className="bg-white p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow md:col-span-2">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-2">Establishing structure where greater clarity and consistency are needed</h3>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">Establishing structure where greater clarity and consistency are needed</h3>
               </div>
             </div>
           </div>
         </div>
 
-        <p className="text-center text-xl text-blue-100 font-medium">
+        <p className="text-center text-lg text-gray-700 font-medium">
           BTSLI™ provides a systems-level approach that supports clear, consistent, and sustainable performance across environments.
         </p>
       </section>
@@ -342,11 +386,16 @@ export default function Home() {
       </section>
 
       {/* SECTION 6 - MODALITIES */}
-      <section className="card bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none">
-        <h2 className="text-4xl font-bold mb-4 text-center">Modalities</h2>
-        <p className="text-center text-blue-50 text-xl max-w-4xl mx-auto leading-relaxed">
-          BTSLI™ uses multiple evidence-informed, systems-based modalities—including performance-based behavioral science and Organizational Behavior Management (OBM)—to strengthen leadership, communication, and consistent execution across environments.
-        </p>
+      <section className="card bg-gradient-to-br from-cyan-50 via-blue-50 to-white border-2 border-cyan-200">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-block px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full text-sm font-semibold mb-4">
+            Evidence-Informed Methods
+          </div>
+          <h2 className="text-4xl font-bold mb-4 text-gray-800">Our Modalities</h2>
+          <p className="text-gray-700 text-xl leading-relaxed">
+            BTSLI™ uses multiple evidence-informed, systems-based modalities—including <span className="font-semibold text-blue-900">performance-based behavioral science</span> and <span className="font-semibold text-cyan-900">Organizational Behavior Management (OBM)</span>—to strengthen leadership, communication, and consistent execution across environments.
+          </p>
+        </div>
       </section>
 
       {/* SECTION 7 - WHO WE COLLABORATE WITH */}
@@ -432,14 +481,20 @@ export default function Home() {
       </section>
 
       {/* SECTION 10 - FINAL CTA */}
-      <section className="card text-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none">
+      <section className="card bg-gradient-to-br from-blue-600 to-cyan-600 text-white border-none text-center">
+        <div className="inline-block px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold mb-6">
+          ✨ Let's Work Together
+        </div>
         <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Improve Performance and Strengthen Communication?</h2>
-        <p className="text-blue-100 mb-10 text-xl max-w-3xl mx-auto leading-relaxed">
-          If your organization is ready to improve performance, strengthen communication, and increase consistency:
+        <p className="text-white/90 mb-10 text-xl max-w-3xl mx-auto leading-relaxed">
+          If your organization is ready to improve performance, strengthen communication, and increase consistency—we're here to help.
         </p>
         <a href="/schedule" className="inline-block px-12 py-6 bg-white text-blue-600 font-bold text-xl rounded-lg shadow-2xl hover:shadow-white/50 hover:scale-105 transition-all">
-          Contact BTSLI™ to Schedule a Consultation
+          Schedule a Free Consultation
         </a>
+        <p className="mt-6 text-white/80 text-sm">
+          No pressure, just conversation about your organization's needs.
+        </p>
       </section>
 
       {/* SECTION 11 - CONTRACTING & CERTIFICATIONS */}
