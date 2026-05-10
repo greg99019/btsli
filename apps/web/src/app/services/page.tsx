@@ -45,35 +45,31 @@ export default function ServicesPage() {
             follow-through, and overall systems flow.
           </p>
 
-          <div className="bg-white rounded-lg p-5 mb-6 border border-blue-100">
+          <div className="bg-white rounded-lg p-5 border border-blue-100">
             <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
               <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              What We Address:
+              Common Challenges We Address
             </h4>
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-start gap-2">
                 <span className="text-blue-600 mt-1">•</span>
-                <span>Staff burnout and high turnover when expectations and systems are not clearly defined</span>
+                <span>Variability in performance across teams and environments</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-600 mt-1">•</span>
-                <span>Inconsistent performance across teams and environments</span>
+                <span>Breakdowns in coordination, communication, and follow-through</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-600 mt-1">•</span>
-                <span>Breakdowns in coordination and follow-through</span>
+                <span>Misalignment between expectations, roles, and day-to-day execution</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-1">•</span>
+                <span>Conditions that contribute to staff strain, turnover, and inconsistent outcomes</span>
               </li>
             </ul>
-          </div>
-
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg p-5">
-            <h4 className="font-bold mb-3">Our Approach:</h4>
-            <p className="text-blue-50 text-sm leading-relaxed">
-              Services are designed to support improved coordination, clearer expectations, and consistent execution 
-              across teams and environments through evidence-informed behavioral systems analysis.
-            </p>
           </div>
         </div>
 
@@ -107,21 +103,13 @@ export default function ServicesPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-cyan-600 mt-1">•</span>
-                <span><strong>Scalable:</strong> Can grow and adapt across different organizational contexts</span>
+                <span><strong>Scalable:</strong> Adaptable across different organizational contexts</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-cyan-600 mt-1">•</span>
-                <span><strong>Aligned:</strong> Matched to organizational goals and stakeholder needs</span>
+                <span><strong>Aligned:</strong> Connected to organizational goals and stakeholder needs</span>
               </li>
             </ul>
-          </div>
-
-          <div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg p-5">
-            <h4 className="font-bold mb-3">Delivery Approach:</h4>
-            <p className="text-cyan-50 text-sm leading-relaxed">
-              Services are tailored to ensure programs integrate seamlessly with existing operations while 
-              establishing new structures for sustainable, measurable performance improvement.
-            </p>
           </div>
         </div>
 
@@ -136,41 +124,10 @@ export default function ServicesPage() {
             <h3 className="text-2xl font-bold text-gray-800">Workforce Development & Performance</h3>
           </div>
 
-          <p className="text-gray-700 text-lg leading-relaxed mb-6">
-            BTSLI™ partners with workforce development organizations and programs to strengthen participant 
+          <p className="text-gray-700 text-lg leading-relaxed">
+            BTSLI™ partners with workforce development organizations and programs to strengthen participant
             engagement, consistency, and performance within structured environments.
           </p>
-
-          <div className="bg-white rounded-lg p-5 mb-6 border border-blue-100">
-            <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              Focus Areas:
-            </h4>
-            <ul className="space-y-2 text-gray-700">
-              <li className="flex items-start gap-2">
-                <span className="text-blue-600 mt-1">•</span>
-                <span>Improved participation in training programs</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-600 mt-1">•</span>
-                <span>Clearer navigation of workplace expectations</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-600 mt-1">•</span>
-                <span>More consistent follow-through across work-based learning activities</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-r from-blue-700 to-cyan-500 text-white rounded-lg p-5">
-            <h4 className="font-bold mb-3">Service Design:</h4>
-            <p className="text-blue-50 text-sm leading-relaxed">
-              Structured interventions that support participants in meeting program requirements while developing 
-              the behavioral repertoires needed for sustained workforce success.
-            </p>
-          </div>
         </div>
 
         {/* Service 4: Staff Development & Training */}
@@ -184,43 +141,19 @@ export default function ServicesPage() {
             <h3 className="text-2xl font-bold text-gray-800">Staff Development & Training</h3>
           </div>
 
-          <p className="text-gray-700 text-lg leading-relaxed mb-6">
-            BTSLI™ provides structured training and implementation support to strengthen staff performance, improve 
+          <p className="text-gray-700 text-lg leading-relaxed">
+            BTSLI™ provides structured training designed to strengthen staff performance, improve
             communication practices, and increase consistency in how expectations are applied across teams.
           </p>
-
-          <div className="bg-white rounded-lg p-5 mb-6 border border-cyan-100">
-            <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <svg className="w-5 h-5 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              Training Components:
-            </h4>
-            <ul className="space-y-2 text-gray-700">
-              <li className="flex items-start gap-2">
-                <span className="text-cyan-600 mt-1">•</span>
-                <span>Structured skill-building sessions</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-cyan-600 mt-1">•</span>
-                <span>Implementation support and coaching</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-cyan-600 mt-1">•</span>
-                <span>Performance feedback systems</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-r from-cyan-700 to-blue-500 text-white rounded-lg p-5">
-            <h4 className="font-bold mb-3">Implementation Model:</h4>
-            <p className="text-cyan-50 text-sm leading-relaxed">
-              Goes beyond traditional training to include real-world application support, ensuring skills 
-              transfer into consistent practice across organizational settings.
-            </p>
-          </div>
         </div>
       </section>
+
+      {/* Consultation Note */}
+      <div className="text-center py-2">
+        <p className="text-gray-700 font-medium max-w-3xl mx-auto text-base sm:text-lg">
+          For more information regarding service design, training components, and implementation structure, contact BTSLI™ to schedule a consultation.
+        </p>
+      </div>
 
       {/* Three Core Differentiators */}
       <section className="card bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none">

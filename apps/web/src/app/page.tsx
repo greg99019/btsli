@@ -24,11 +24,10 @@ export default function Home() {
             Behavioral Systems Consulting for Performance, Clarity, and Consistent Execution
           </h1>
           <h2 className="text-lg sm:text-2xl md:text-3xl text-white/95 max-w-4xl mx-auto font-normal drop-shadow-md text-balance">
-            Beyond The Surface Leadership Institute™ designs and implements structured, behavior-based systems that improve communication, strengthen leadership, and increase performance across organizations.
+            Beyond The Surface Leadership Institute™, LLC designs and implements structured, behavioral systems that improve communication, strengthen leadership, and support consistent performance across organizations.
           </h2>
           <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow px-1">
-            We work with organizations experiencing breakdowns in communication, inconsistency in performance, 
-            lack of follow-through, and unclear expectations.
+            Organizations often operate within environments where communication, expectations, and follow-through are not consistently aligned across teams and systems.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap pt-2 sm:pt-4 max-w-md sm:max-w-none mx-auto">
             <a href="/schedule" className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-2xl w-full sm:w-auto">
@@ -161,7 +160,7 @@ export default function Home() {
 
       {/* About the Organization */}
       <section className="card bg-gradient-to-br from-blue-50 to-cyan-50">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 text-center">About Beyond The Surface Leadership Institute™</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 text-center">About Beyond The Surface Leadership Institute™, LLC</h2>
         <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto text-sm sm:text-base">
           We're a Behavioral Systems Consulting firm founded on evidence-informed practices, dedicated to helping organizations thrive.
         </p>
@@ -177,7 +176,7 @@ export default function Home() {
               <li>• Master's degree in Marriage and Family Therapy</li>
               <li>• Bachelor's degree in Behavioral Science</li>
               <li>• Post-Baccalaureate Certificate in Applied Behavior Analysis</li>
-              <li>• Certification as a Professional Coach</li>
+              <li>• Professional Consulting Certification</li>
             </ul>
           </div>
 
@@ -200,6 +199,27 @@ export default function Home() {
           <p className="text-base sm:text-lg font-medium text-blue-900">
             This combined expertise informs the Institute's approach to consulting and program design, ensuring that all services are structured, scalable, and aligned with sustainable, performance-driven outcomes across organizational, educational, and community-based environments.
           </p>
+        </div>
+      </section>
+
+      {/* Performance Environments */}
+      <section className="card bg-gradient-to-br from-blue-50 to-cyan-50">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 text-center">Performance Environments</h2>
+        <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto text-sm sm:text-base">
+          BTSLI™ strengthens consistent, sustainable performance across the following environments:
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {[
+            { label: "Organizational", icon: "🏢" },
+            { label: "Educational", icon: "🏫" },
+            { label: "Community-Based", icon: "🤝" },
+            { label: "High-Accountability Systems", icon: "⚙️" },
+          ].map((env) => (
+            <div key={env.label} className="bg-white rounded-xl p-5 text-center border-2 border-blue-200 shadow-sm">
+              <div className="text-3xl mb-2">{env.icon}</div>
+              <p className="font-semibold text-gray-800">{env.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -300,7 +320,7 @@ export default function Home() {
               <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Behavioral Systems Consulting</h3>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              BTSLI™ partners with organizations to identify breakdowns in communication, role clarity, accountability, follow-through, and overall systems flow. These breakdowns can contribute to staff burnout, inconsistent performance, and higher turnover when expectations and systems are not clearly defined or supported. Services are designed to support improved coordination, clearer expectations, and consistent execution across teams and environments.
+              BTSLI™ partners with organizations to identify breakdowns in communication, role clarity, accountability, follow-through, and overall systems flow.
             </p>
           </div>
 
@@ -314,7 +334,7 @@ export default function Home() {
               <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Program Development & Implementation</h3>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              BTSLI™ designs and implements structured programs that support clarity, consistency, and measurable outcomes across organizational, educational, and community-based environments. Services are tailored to ensure programs are usable, scalable, and aligned with real-world conditions.
+              BTSLI™ designs and implements structured programs that support clarity, consistency, and measurable outcomes across organizational, educational, and community-based environments.
             </p>
           </div>
 
@@ -328,7 +348,7 @@ export default function Home() {
               <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Workforce Development & Performance</h3>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              BTSLI™ partners with workforce development organizations and programs to strengthen participant engagement, consistency, and performance within structured environments. Services are designed to support improved participation, clearer navigation of expectations, and more consistent follow-through across training and work-based learning activities.
+              BTSLI™ partners with workforce development organizations and programs to strengthen participant engagement, consistency, and performance within structured environments.
             </p>
           </div>
 
