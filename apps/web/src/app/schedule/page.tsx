@@ -144,7 +144,7 @@ export default function SchedulePage() {
               </div>
               <div className="flex items-center gap-3 text-gray-700">
                 <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                <span><strong>Consultant:</strong> {selectedCoach.name}</span>
+                <span><strong>Specialist:</strong> {selectedCoach.name}</span>
               </div>
               <div className="flex items-center gap-3 text-gray-700">
                 <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -283,8 +283,8 @@ export default function SchedulePage() {
         <div className="flex items-center gap-4 mb-5">
           <StepBadge num={2} active={currentStep === 2} done={step2Done} />
           <div>
-            <h2 className="text-xl font-bold text-gray-800">Step 2 — Select Specialist</h2>
-            <p className="text-sm text-gray-500">Select a specialist…</p>
+            <h2 className="text-xl font-bold text-gray-800">Select a Specialist</h2>
+            <p className="text-sm text-gray-500">Select the BTSLI™ specialist who will lead your consultation.</p>
           </div>
         </div>
 
@@ -348,7 +348,7 @@ export default function SchedulePage() {
         </div>
 
         {!step2Done && (
-          <p className="text-gray-400 text-sm py-2">Please select a consultant first.</p>
+          <p className="text-gray-400 text-sm py-2">Please select a specialist first.</p>
         )}
 
         {step2Done && slots.length === 0 && !err && (
@@ -362,7 +362,7 @@ export default function SchedulePage() {
         )}
 
         {step2Done && slots.length === 0 && err && (
-          <p className="text-gray-500 text-sm py-2">No available slots found for the selected consultant in the next 14 days.</p>
+          <p className="text-gray-500 text-sm py-2">No available slots found for the selected specialist in the next 14 days.</p>
         )}
 
         {slots.length > 0 && (
@@ -424,7 +424,7 @@ export default function SchedulePage() {
             {selectedCoach && (
               <div className="flex items-center gap-3 text-gray-700">
                 <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                <span><strong>Consultant:</strong> {selectedCoach.name}</span>
+                <span><strong>Specialist:</strong> {selectedCoach.name}</span>
               </div>
             )}
             {selectedSlot && (
@@ -484,7 +484,7 @@ export default function SchedulePage() {
           <p className="font-semibold text-gray-800">Need assistance?</p>
           <p className="text-sm text-gray-600 mt-0.5">
             If you have questions about which service is right for your organization, contact us directly at{' '}
-            <a href="/schedule" className="text-blue-600 underline hover:text-blue-800">btsli.com</a>{' '}
+            <a href="https://btsli.com" className="text-blue-600 underline hover:text-blue-800">btsli.com</a>{' '}
             and a specialist will reach out to guide you.
           </p>
         </div>
