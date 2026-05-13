@@ -14,6 +14,32 @@ enum Role {
   SUPER_ADMIN
 }
 
+enum UrgencyLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum OrgType {
+  NONPROFIT
+  GOVERNMENT
+  CORPORATE
+  SMALL_BUSINESS
+  EDUCATION
+  HEALTHCARE
+  OTHER
+}
+
+enum BudgetRange {
+  UNDER_5K
+  FIVE_TO_15K
+  FIFTEEN_TO_30K
+  THIRTY_TO_60K
+  OVER_60K
+  NOT_SURE
+}
+
 enum ServiceCategory {
   INDIVIDUAL
   FAMILY
@@ -237,4 +263,77 @@ model Certificate {
   scorePct  Float?
 
   @@unique([userId, courseId])
+}
+
+// ── Lead Capture & Intake ────────────────────────────────────────────────────
+
+model LeadCapture {
+  id                  String       @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt           DateTime     @default(now())
+
+  orgName             String
+  contactName         String
+  contactEmail        String
+  contactPhone        String?
+  role                String
+  orgType             OrgType
+  teamSize            String
+  departmentsInvolved String[]
+
+  mainChallenge       String
+  challengeTags       String[]
+  whatIsBreaking      String
+  desiredOutcome      String
+  urgencyLevel        UrgencyLevel
+  currentSystems      String[]
+
+  budgetRange         BudgetRange
+  preferredTime       String?
+  additionalNotes     String?
+
+  leadScore           Int          @default(0)
+  suggestedPath       String?
+  status              String       @default("NEW")
+
+  assessment          SystemsAssessment?
+  briefing            ConsultantBriefing?
+}
+
+model SystemsAssessment {
+  id                  String      @id @default(auto()) @map("_id") @db.ObjectId
+  leadId              String      @unique @db.ObjectId
+  createdAt           DateTime    @default(now())
+
+  communication       Float
+  trainingOnboarding  Float
+  accountability      Float
+  documentation       Float
+  teamCoordination    Float
+  performanceTracking Float
+  leadershipAlignment Float
+
+  answers             Json
+  totalScore          Float
+  weakestAreas        String[]
+  systemsSnapshot     String
+
+  lead                LeadCapture @relation(fields: [leadId], references: [id])
+}
+
+model ConsultantBriefing {
+  id                  String      @id @default(auto()) @map("_id") @db.ObjectId
+  leadId              String      @unique @db.ObjectId
+  createdAt           DateTime    @default(now())
+
+  clientSummary       String
+  mainPainPoints      String[]
+  riskLevel           String
+  likelyRootCauses    String[]
+  suggestedQuestions  String[]
+  recommendedService  String
+  draftFollowUpEmail  String
+  draftProposalAngle  String
+  draftKpis           String[]
+
+  lead                LeadCapture @relation(fields: [leadId], references: [id])
 }

@@ -51,22 +51,22 @@ export class AdminController {
         await this.prisma.course.upsert({
           where: { id: courseData.id },
           update: { published: true },
-          create: { ...courseData, published: true },
+          create: { ...courseData, published: true, ownerCoachId: 'system' },
         });
       }
 
       // Create modules
       const modules = [
-        { id: 'mod-til-intro', courseId: 'course-trauma-leadership-101', title: 'Introduction to Trauma-Informed Leadership', sortOrder: 1 },
-        { id: 'mod-til-practice', courseId: 'course-trauma-leadership-101', title: 'Putting It Into Practice', sortOrder: 2 },
-        { id: 'mod-comm-basics', courseId: 'course-communication-skills', title: 'Communication Basics', sortOrder: 1 },
-        { id: 'mod-ei-intro', courseId: 'course-emotional-intelligence', title: 'Introduction to Emotional Intelligence', sortOrder: 1 },
+        { id: 'mod-til-intro', courseId: 'course-trauma-leadership-101', title: 'Introduction to Trauma-Informed Leadership', orderIdx: 1 },
+        { id: 'mod-til-practice', courseId: 'course-trauma-leadership-101', title: 'Putting It Into Practice', orderIdx: 2 },
+        { id: 'mod-comm-basics', courseId: 'course-communication-skills', title: 'Communication Basics', orderIdx: 1 },
+        { id: 'mod-ei-intro', courseId: 'course-emotional-intelligence', title: 'Introduction to Emotional Intelligence', orderIdx: 1 },
       ];
 
       for (const moduleData of modules) {
         await this.prisma.module.upsert({
           where: { id: moduleData.id },
-          update: moduleData,
+          update: { title: moduleData.title, orderIdx: moduleData.orderIdx },
           create: moduleData,
         });
       }
@@ -77,91 +77,83 @@ export class AdminController {
           id: 'lesson-til-welcome',
           moduleId: 'mod-til-intro',
           title: 'Welcome to Trauma-Informed Leadership',
-          description: 'An introduction to the course and what you will learn',
           type: 'VIDEO',
           videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          sortOrder: 1,
+          orderIdx: 1,
         },
         {
           id: 'lesson-til-foundations',
           moduleId: 'mod-til-intro',
           title: 'Understanding Trauma in the Workplace',
-          description: 'Learn how trauma affects behavior and performance in professional settings',
           type: 'VIDEO',
           videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          sortOrder: 2,
+          orderIdx: 2,
         },
         {
           id: 'lesson-til-principles',
           moduleId: 'mod-til-intro',
           title: 'Core Principles of Trauma-Informed Care',
-          description: 'Explore the six key principles',
           type: 'READING',
           readingHtml:
             '<h2>Six Core Principles</h2><ol><li><strong>Safety</strong></li><li><strong>Trustworthiness & Transparency</strong></li><li><strong>Peer Support</strong></li><li><strong>Collaboration & Mutuality</strong></li><li><strong>Empowerment & Choice</strong></li><li><strong>Cultural Sensitivity</strong></li></ol>',
-          sortOrder: 3,
+          orderIdx: 3,
         },
         {
           id: 'lesson-til-communication',
           moduleId: 'mod-til-practice',
           title: 'Trauma-Informed Communication Strategies',
-          description: 'Learn how to communicate in ways that promote safety and build trust',
           type: 'VIDEO',
           videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          sortOrder: 1,
+          orderIdx: 1,
         },
         {
           id: 'lesson-til-boundaries',
           moduleId: 'mod-til-practice',
           title: 'Setting Healthy Boundaries',
-          description: 'Understand how to establish and maintain appropriate boundaries as a leader',
           type: 'VIDEO',
           videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          sortOrder: 2,
+          orderIdx: 2,
         },
         {
           id: 'lesson-comm-active-listening',
           moduleId: 'mod-comm-basics',
           title: 'Active Listening Skills',
-          description: 'Master the art of truly hearing what others are saying',
           type: 'VIDEO',
           videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          sortOrder: 1,
+          orderIdx: 1,
         },
         {
           id: 'lesson-comm-nonverbal',
           moduleId: 'mod-comm-basics',
           title: 'Non-Verbal Communication',
-          description: 'Understanding body language, tone, and other non-verbal cues',
           type: 'VIDEO',
           videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          sortOrder: 2,
+          orderIdx: 2,
         },
         {
           id: 'lesson-ei-self-awareness',
           moduleId: 'mod-ei-intro',
           title: 'Developing Self-Awareness',
-          description: 'Learn to recognize and understand your own emotions',
           type: 'VIDEO',
           videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          sortOrder: 1,
+          orderIdx: 1,
         },
         {
           id: 'lesson-ei-empathy',
           moduleId: 'mod-ei-intro',
           title: 'Building Empathy',
-          description: 'Strengthen your ability to understand and relate to others',
           type: 'VIDEO',
           videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          sortOrder: 2,
+          orderIdx: 2,
         },
       ];
 
       for (const lessonData of lessons) {
+        const { id, moduleId, ...rest } = lessonData;
         await this.prisma.lesson.upsert({
-          where: { id: lessonData.id },
-          update: lessonData,
-          create: lessonData,
+          where: { id },
+          update: rest as any,
+          create: lessonData as any,
         });
       }
 

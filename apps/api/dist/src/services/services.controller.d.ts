@@ -4,8 +4,8 @@ export declare class ServicesController {
     constructor(services: ServicesService);
     list(): import(".prisma/client").Prisma.PrismaPromise<{
         id: string;
-        slug: string;
         name: string;
+        slug: string;
         category: import(".prisma/client").$Enums.ServiceCategory;
         description: string;
         priceMin: number;
@@ -17,8 +17,8 @@ export declare class ServicesController {
     }[]>;
     get(slug: string): import(".prisma/client").Prisma.Prisma__ServiceClient<{
         id: string;
-        slug: string;
         name: string;
+        slug: string;
         category: import(".prisma/client").$Enums.ServiceCategory;
         description: string;
         priceMin: number;

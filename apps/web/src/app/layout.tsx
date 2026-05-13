@@ -27,11 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <a href="/about" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a>
                 <a href="/overview" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Overview</a>
                 <a href="/services" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a>
+                <a href="/intake" className="text-sm sm:text-base text-orange-600 hover:text-orange-700 font-semibold transition-colors">Assessment</a>
                 <a href="/resources" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Resources</a>
                 <a href="/dashboard" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Client Portal</a>
                 <a href="/login" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Login</a>
-                <a href="/schedule" className="col-span-2 md:col-span-1 justify-self-center px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-medium hover:shadow-lg transition-all w-full sm:w-auto max-w-xs md:max-w-none">
-                  Schedule Consultation
+                <a href="/intake" className="col-span-2 md:col-span-1 justify-self-center px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-medium hover:shadow-lg transition-all w-full sm:w-auto max-w-xs md:max-w-none">
+                  Get Started
                 </a>
               </div>
             </div>
@@ -73,8 +74,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <p className="text-blue-200 mb-3 text-sm">
                   Ready to improve organizational performance?
                 </p>
-                <a href="/schedule" className="inline-block px-5 py-2.5 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-lg transition-all text-sm">
-                  Schedule Consultation
+                <a href="/intake" className="inline-block px-5 py-2.5 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-lg transition-all text-sm">
+                  Systems Fit Assessment
                 </a>
                 <div className="mt-4 space-y-1">
                   <p className="text-blue-300 text-xs">WOSB Certified</p>

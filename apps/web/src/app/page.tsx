@@ -17,7 +17,7 @@ export default function Home() {
         
         {/* Content */}
         <div className="relative z-10 text-center space-y-4 sm:space-y-6 max-w-5xl mx-auto">
-          <div className="inline-block max-w-full px-3 sm:px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium text-xs sm:text-sm mb-2 sm:mb-4 border border-white/30">
+          <div className="inline-block max-w-full px-3 sm:px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-orange-300 font-medium text-xs sm:text-sm mb-2 sm:mb-4 border border-orange-300/50">
             ✨ Systems-Based Consulting for Meaningful Change
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight drop-shadow-lg text-balance">
@@ -30,8 +30,8 @@ export default function Home() {
             Organizations often operate within environments where communication, expectations, and follow-through are not consistently aligned across teams and systems.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap pt-2 sm:pt-4 max-w-md sm:max-w-none mx-auto">
-            <a href="/schedule" className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-2xl w-full sm:w-auto">
-              Schedule a Free Consultation
+            <a href="/intake" className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-2xl w-full sm:w-auto">
+              Start Your Systems Assessment
             </a>
             <a href="/about" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/95 text-blue-600 font-semibold rounded-lg shadow-xl hover:shadow-2xl hover:bg-white transition-all text-base sm:text-lg hover:scale-105 w-full sm:w-auto">
               Learn About Our Approach
@@ -41,7 +41,7 @@ export default function Home() {
           {/* Trust Indicators */}
           <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3 sm:gap-8 flex-wrap pt-6 sm:pt-8 text-sm text-white/90 max-w-md sm:max-w-none mx-auto">
             <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-              <svg className="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <span>Evidence-Informed Methods</span>
@@ -53,7 +53,7 @@ export default function Home() {
               <span>WOSB & EDWOSB Certified</span>
             </div>
             <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-              <svg className="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-orange-300" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
               </svg>
               <span>Doctoral-Level Leadership</span>
@@ -149,11 +149,11 @@ export default function Home() {
             <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Our Values</h3>
           </div>
           <ul className="space-y-2 text-gray-700 text-sm">
-            <li><span className="font-bold text-blue-700">Integrity:</span> Ethical clarity and transparency</li>
-            <li><span className="font-bold text-blue-700">Urgency:</span> Disciplined speed with precision</li>
-            <li><span className="font-bold text-blue-700">Excellence:</span> Evidence-informed solutions</li>
-            <li><span className="font-bold text-blue-700">Contextual Fit:</span> Real-world alignment</li>
-            <li><span className="font-bold text-blue-700">Stability:</span> Foundation for performance</li>
+            <li><span className="font-bold text-orange-600">Integrity:</span> Ethical clarity and transparency</li>
+            <li><span className="font-bold text-orange-600">Urgency:</span> Disciplined speed with precision</li>
+            <li><span className="font-bold text-orange-600">Excellence:</span> Evidence-informed solutions</li>
+            <li><span className="font-bold text-orange-600">Contextual Fit:</span> Real-world alignment</li>
+            <li><span className="font-bold text-orange-600">Stability:</span> Foundation for performance</li>
           </ul>
         </div>
       </section>

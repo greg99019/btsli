@@ -11,8 +11,8 @@ export declare class LmsController {
     enroll(req: any, courseId: string): Promise<{
         id: string;
         createdAt: Date;
-        userId: string;
         courseId: string;
+        userId: string;
     }>;
     outline(req: any, courseId: string): Promise<{
         id: string;
@@ -24,8 +24,8 @@ export declare class LmsController {
             orderIdx: number;
             progress: {
                 id: string;
-                userId: string;
                 status: import(".prisma/client").$Enums.ProgressStatus;
+                userId: string;
                 lessonId: string;
                 percent: number;
                 lastSecond: number;
@@ -48,8 +48,8 @@ export declare class LmsController {
         assessmentId: string;
         progress: {
             id: string;
-            userId: string;
             status: import(".prisma/client").$Enums.ProgressStatus;
+            userId: string;
             lessonId: string;
             percent: number;
             lastSecond: number;
@@ -61,8 +61,8 @@ export declare class LmsController {
         completed?: boolean;
     }): Promise<{
         id: string;
-        userId: string;
         status: import(".prisma/client").$Enums.ProgressStatus;
+        userId: string;
         lessonId: string;
         percent: number;
         lastSecond: number;

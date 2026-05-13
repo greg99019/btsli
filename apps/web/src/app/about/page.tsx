@@ -71,7 +71,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-blue-600 mt-1">🎓</span>
-                  <span><strong>Certification</strong> as a Professional Coach</span>
+                  <span><strong>Professional Consulting Certification</strong></span>
                 </li>
               </ul>
             </div>

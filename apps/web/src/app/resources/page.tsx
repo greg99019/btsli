@@ -2,8 +2,8 @@ export default function ResourcesPage() {
   const articles = [
     {
       id: 1,
-      title: "What Is Trauma-Aware Coaching?",
-      excerpt: "Understanding the foundations of trauma-informed coaching and how it differs from traditional therapy. Learn about the principles that guide our approach to leadership development.",
+      title: "What Is Behavioral Systems Consulting?",
+      excerpt: "Understanding the foundations of behavioral systems consulting and how structured systems thinking drives consistent, measurable performance across organizations.",
       category: "Foundations",
       readTime: "5 min read",
       slug: "what-is-trauma-aware-coaching"
@@ -60,7 +60,7 @@ export default function ResourcesPage() {
           Resources & Insights
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Evidence-based articles on trauma-aware coaching, leadership development, and organizational resilience
+          Evidence-based articles on behavioral systems consulting, leadership development, and organizational performance
         </p>
       </section>
 
@@ -129,7 +129,7 @@ export default function ResourcesPage() {
       <section className="card text-center">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Stay Connected</h2>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          Get monthly insights on trauma-informed leadership, coaching strategies, and organizational development delivered to your inbox.
+          Get monthly insights on behavioral systems, leadership performance, and organizational development delivered to your inbox.
         </p>
         <form className="max-w-md mx-auto flex gap-3">
           <input 

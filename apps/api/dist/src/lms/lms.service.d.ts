@@ -5,8 +5,8 @@ export declare class LmsService {
     enroll(userId: string, courseId: string): Promise<{
         id: string;
         createdAt: Date;
-        userId: string;
         courseId: string;
+        userId: string;
     }>;
     assertEnrolled(userId: string, courseId: string): Promise<void>;
     myCourses(userId: string): Promise<{
@@ -25,8 +25,8 @@ export declare class LmsService {
             orderIdx: number;
             progress: {
                 id: string;
-                userId: string;
                 status: import(".prisma/client").$Enums.ProgressStatus;
+                userId: string;
                 lessonId: string;
                 percent: number;
                 lastSecond: number;
@@ -49,8 +49,8 @@ export declare class LmsService {
         assessmentId: string;
         progress: {
             id: string;
-            userId: string;
             status: import(".prisma/client").$Enums.ProgressStatus;
+            userId: string;
             lessonId: string;
             percent: number;
             lastSecond: number;
@@ -62,8 +62,8 @@ export declare class LmsService {
         completed?: boolean;
     }): Promise<{
         id: string;
-        userId: string;
         status: import(".prisma/client").$Enums.ProgressStatus;
+        userId: string;
         lessonId: string;
         percent: number;
         lastSecond: number;

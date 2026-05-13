@@ -71,7 +71,7 @@ export default function CoachSlotsPage() {
 
   return (
     <div style={{ display: 'grid', gap: 16 }}>
-      <h1>Coach Dashboard — Availability Slots</h1>
+      <h1>Specialist Dashboard — Availability Slots</h1>
 
       <div style={{ border: '1px solid #eee', padding: 16, borderRadius: 12 }}>
         <h3>Create slot</h3>

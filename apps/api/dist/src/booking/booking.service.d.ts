@@ -39,19 +39,19 @@ export declare class BookingService {
         endAt: string;
     }): Promise<{
         id: string;
+        status: string;
         coachId: string;
         serviceId: string;
         startAt: Date;
         endAt: Date;
         clientId: string;
-        status: string;
         notes: string | null;
     }>;
     myAppointments(userId: string): import(".prisma/client").Prisma.PrismaPromise<({
         service: {
             id: string;
-            slug: string;
             name: string;
+            slug: string;
             category: import(".prisma/client").$Enums.ServiceCategory;
             description: string;
             priceMin: number;
@@ -64,11 +64,11 @@ export declare class BookingService {
         coach: {
             user: {
                 id: string;
+                createdAt: Date;
+                role: import(".prisma/client").$Enums.Role;
                 name: string;
                 email: string;
                 passwordHash: string;
-                role: import(".prisma/client").$Enums.Role;
-                createdAt: Date;
             };
         } & {
             id: string;
@@ -78,12 +78,12 @@ export declare class BookingService {
         };
     } & {
         id: string;
+        status: string;
         coachId: string;
         serviceId: string;
         startAt: Date;
         endAt: Date;
         clientId: string;
-        status: string;
         notes: string | null;
     })[]>;
 }

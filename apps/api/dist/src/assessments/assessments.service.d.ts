@@ -21,12 +21,12 @@ export declare class AssessmentsService {
     }>;
     startAttempt(userId: string, assessmentId: string): Promise<{
         id: string;
-        userId: string;
         status: string;
+        score: number | null;
+        userId: string;
         assessmentId: string;
         startedAt: Date;
         submittedAt: Date | null;
-        score: number | null;
     }>;
     saveAnswer(userId: string, attemptId: string, input: {
         questionId: string;
@@ -44,12 +44,12 @@ export declare class AssessmentsService {
     submit(userId: string, attemptId: string): Promise<{
         attempt: {
             id: string;
-            userId: string;
             status: string;
+            score: number | null;
+            userId: string;
             assessmentId: string;
             startedAt: Date;
             submittedAt: Date | null;
-            score: number | null;
         };
         scorePct: number;
         earned: number;

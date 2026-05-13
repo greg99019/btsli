@@ -21,12 +21,12 @@ export declare class AssessmentsController {
     }>;
     start(req: any, assessmentId: string): Promise<{
         id: string;
-        userId: string;
         status: string;
+        score: number | null;
+        userId: string;
         assessmentId: string;
         startedAt: Date;
         submittedAt: Date | null;
-        score: number | null;
     }>;
     answer(req: any, attemptId: string, body: {
         questionId: string;
@@ -44,12 +44,12 @@ export declare class AssessmentsController {
     submit(req: any, attemptId: string): Promise<{
         attempt: {
             id: string;
-            userId: string;
             status: string;
+            score: number | null;
+            userId: string;
             assessmentId: string;
             startedAt: Date;
             submittedAt: Date | null;
-            score: number | null;
         };
         scorePct: number;
         earned: number;

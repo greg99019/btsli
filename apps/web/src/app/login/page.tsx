@@ -66,7 +66,7 @@ export default function LoginPage() {
             
             <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 border border-white/30">
               <div className="flex items-center justify-between mb-2">
-                <p className="font-semibold text-sm">Coach Account</p>
+                <p className="font-semibold text-sm">Specialist Account</p>
                 <button
                   onClick={() => useDemoAccount('coach@btsli.com', 'Demo123!')}
                   className="text-xs bg-white/30 hover:bg-white/40 px-3 py-1 rounded-full transition-all"
