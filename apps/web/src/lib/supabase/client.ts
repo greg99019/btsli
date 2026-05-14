@@ -22,7 +22,7 @@ function createMissingEnvClient() {
     },
   }
 
-  return new Proxy(() => undefined, handler) as ReturnType<typeof createBrowserClient>
+  return new Proxy(() => undefined, handler) as unknown as ReturnType<typeof createBrowserClient>
 }
 
 export function createClient() {
