@@ -5,10 +5,13 @@ import Link from 'next/link'
 import PlatformLayout, { AuthUser } from '@/components/layout/PlatformLayout'
 
 interface Stats {
-  totalUsers: number; totalModules: number; totalCompletions: number
-  completionRate: number
-  recentCompletions: { userName: string; moduleName: string; completedAt: string; score?: number }[]
-  moduleStats: { moduleId: string; title: string; completions: number; avgScore?: number }[]
+  totalUsers: number
+  totalModules: number
+  totalCompletions: number
+  totalOrgs: number
+  totalCerts: number
+  recentCompletions: { user: { name: string; email: string }; module: { title: string }; completedAt: string }[]
+  modules: { id: string; title: string; _count: { completions: number; progress: number } }[]
 }
 
 export default function AdminPage() {
@@ -45,7 +48,7 @@ export default function AdminPage() {
             { label: 'Total Users', value: stats?.totalUsers ?? 0, color: 'blue' },
             { label: 'Modules', value: stats?.totalModules ?? 0, color: 'violet' },
             { label: 'Completions', value: stats?.totalCompletions ?? 0, color: 'emerald' },
-            { label: 'Completion Rate', value: (stats?.completionRate ?? 0).toFixed(1) + '%', color: 'amber' },
+            { label: 'Certificates', value: stats?.totalCerts ?? 0, color: 'amber' },
           ].map(card => (
             <div key={card.label} className="bg-white border border-slate-200 rounded-2xl p-5">
               <p className="text-xs text-slate-500 uppercase tracking-wide font-medium">{card.label}</p>
@@ -56,17 +59,16 @@ export default function AdminPage() {
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="bg-white border border-slate-200 rounded-2xl p-5">
             <h2 className="font-semibold text-slate-800 mb-4">Recent Completions</h2>
-            {stats?.recentCompletions.length === 0
+            {(stats?.recentCompletions?.length ?? 0) === 0
               ? <p className="text-sm text-slate-400">No completions yet.</p>
               : <div className="space-y-3">
                   {(stats?.recentCompletions ?? []).map((c, i) => (
                     <div key={i} className="flex items-center justify-between py-2 border-b border-slate-100 last:border-0">
                       <div>
-                        <p className="text-sm font-medium text-slate-800">{c.userName}</p>
-                        <p className="text-xs text-slate-500">{c.moduleName}</p>
+                        <p className="text-sm font-medium text-slate-800">{c.user.name}</p>
+                        <p className="text-xs text-slate-500">{c.module.title}</p>
                       </div>
                       <div className="text-right">
-                        {c.score != null && <p className="text-sm font-semibold text-emerald-600">{Math.round(c.score * 100)}%</p>}
                         <p className="text-xs text-slate-400">{new Date(c.completedAt).toLocaleDateString()}</p>
                       </div>
                     </div>
@@ -75,15 +77,14 @@ export default function AdminPage() {
           </div>
           <div className="bg-white border border-slate-200 rounded-2xl p-5">
             <h2 className="font-semibold text-slate-800 mb-4">Module Performance</h2>
-            {stats?.moduleStats.length === 0
+            {(stats?.modules?.length ?? 0) === 0
               ? <p className="text-sm text-slate-400">No data yet.</p>
               : <div className="space-y-3">
-                  {(stats?.moduleStats ?? []).map(m => (
-                    <div key={m.moduleId} className="flex items-center justify-between py-2 border-b border-slate-100 last:border-0">
+                  {(stats?.modules ?? []).map(m => (
+                    <div key={m.id} className="flex items-center justify-between py-2 border-b border-slate-100 last:border-0">
                       <p className="text-sm text-slate-700 truncate flex-1 mr-4">{m.title}</p>
                       <div className="text-right flex-shrink-0">
-                        <p className="text-sm font-semibold text-blue-600">{m.completions} completions</p>
-                        {m.avgScore != null && <p className="text-xs text-slate-400">Avg: {Math.round(m.avgScore * 100)}%</p>}
+                        <p className="text-sm font-semibold text-blue-600">{m._count.completions} completions</p>
                       </div>
                     </div>
                   ))}
