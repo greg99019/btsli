@@ -1,13 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
-import { SignJWT } from 'jose';
-
-function getSecret() {
-  const s = process.env.JWT_SECRET;
-  if (!s) throw new Error('JWT_SECRET not set');
-  return new TextEncoder().encode(s);
-}
+import { AUTH_COOKIE_NAME, signAuthToken } from '@/lib/auth';
 
 export async function POST(req: NextRequest) {
   try {
@@ -27,13 +21,25 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 });
     }
 
-    const token = await new SignJWT({ sub: user.id, email: user.email, role: user.role })
-      .setProtectedHeader({ alg: 'HS256' })
-      .setIssuedAt()
-      .setExpirationTime('7d')
-      .sign(getSecret());
+    const token = await signAuthToken({
+      id: user.id,
+      email: user.email,
+      role: user.role,
+      name: user.name,
+    });
 
-    return NextResponse.json({ token, role: user.role, name: user.name });
+    const response = NextResponse.json({ token, role: user.role, name: user.name });
+    response.cookies.set({
+      name: AUTH_COOKIE_NAME,
+      value: token,
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7,
+    });
+
+    return response;
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
     console.error('[auth/login POST]', message);

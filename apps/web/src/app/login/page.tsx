@@ -2,7 +2,12 @@
 
 import { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { createClient } from '@/lib/supabase/client'
+
+type LoginResponse = {
+  token: string
+  role: 'CLIENT' | 'COACH' | 'ORG_ADMIN' | 'SUPER_ADMIN'
+  name: string
+}
 
 export default function LoginPage() {
   return (
@@ -19,21 +24,34 @@ function LoginPageContent() {
   const [error, setError] = useState('')
   const router = useRouter()
   const searchParams = useSearchParams()
-  const supabase = createClient()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError('')
 
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) {
-      setError(error.message)
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    })
+
+    const data = (await res.json().catch(() => null)) as Partial<LoginResponse> & { message?: string } | null
+
+    if (!res.ok || !data?.token || !data?.role) {
+      setError(data?.message ?? 'Unable to sign in. Please check your email and password.')
       setLoading(false)
       return
     }
 
-    const redirectTo = searchParams.get('redirectTo') ?? '/dashboard'
+    localStorage.setItem('token', data.token)
+    localStorage.setItem('userRole', data.role)
+    if (data.name) {
+      localStorage.setItem('userName', data.name)
+    }
+
+    const defaultRoute = data.role === 'COACH' ? '/coach/leads' : '/dashboard'
+    const redirectTo = searchParams.get('redirectTo') ?? defaultRoute
     router.push(redirectTo)
     router.refresh()
   }
@@ -68,12 +86,7 @@ function LoginPageContent() {
               />
             </div>
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="text-sm font-semibold text-slate-700">Password</label>
-                <a href="/reset-password" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
-                  Forgot password?
-                </a>
-              </div>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Password</label>
               <input
                 type="password"
                 required
@@ -92,7 +105,7 @@ function LoginPageContent() {
             </button>
           </form>
           <p className="mt-6 text-center text-xs text-slate-500">
-            Having trouble? Contact your organization administrator.
+            Sign in with your MongoDB-backed BTSLI account. Having trouble? Contact your organization administrator.
           </p>
         </div>
       </div>
