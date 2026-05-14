@@ -1,4 +1,7 @@
-'use client'
+const fs = require('fs')
+const path = require('path')
+
+const content = `'use client'
 import { useEffect, useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
@@ -195,3 +198,9 @@ export default function EditModulePage() {
     </div>
   )
 }
+`
+
+const outPath = path.join(__dirname, 'src', 'app', 'admin', 'modules', '[id]', 'edit', 'page.tsx')
+fs.mkdirSync(path.dirname(outPath), { recursive: true })
+fs.writeFileSync(outPath, content, 'utf8')
+console.log('Written:', outPath)

@@ -24,8 +24,9 @@ export async function POST(req: NextRequest) {
     const token = await signAuthToken({
       id: user.id,
       email: user.email,
-      role: user.role,
-      name: user.name,
+      role: user.role as import('@/lib/auth').AuthRole,
+      name: user.name ?? undefined,
+      orgId: user.orgId ?? undefined,
     });
 
     const response = NextResponse.json({ token, role: user.role, name: user.name });

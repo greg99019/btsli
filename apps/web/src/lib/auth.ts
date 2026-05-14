@@ -3,13 +3,14 @@ import type { NextRequest } from 'next/server'
 
 export const AUTH_COOKIE_NAME = 'btsli_token'
 
-export type AuthRole = 'CLIENT' | 'COACH' | 'ORG_ADMIN' | 'SUPER_ADMIN'
+export type AuthRole = 'CLIENT' | 'COACH' | 'ORG_ADMIN' | 'SUPER_ADMIN' | 'CONSULTANT' | 'MANAGER' | 'PARTICIPANT'
 
 export interface AuthUser {
   id: string
   email: string
   role: AuthRole
   name?: string
+  orgId?: string
 }
 
 function getSecret() {
@@ -19,7 +20,7 @@ function getSecret() {
 }
 
 export async function signAuthToken(user: AuthUser) {
-  return new SignJWT({ email: user.email, role: user.role, name: user.name })
+  return new SignJWT({ email: user.email, role: user.role, name: user.name, orgId: user.orgId })
     .setProtectedHeader({ alg: 'HS256' })
     .setSubject(user.id)
     .setIssuedAt()
@@ -35,6 +36,7 @@ export async function verifyAuthToken(token: string): Promise<AuthUser> {
     email: String(payload.email ?? ''),
     role: String(payload.role ?? 'CLIENT') as AuthRole,
     name: payload.name ? String(payload.name) : undefined,
+    orgId: payload.orgId ? String(payload.orgId) : undefined,
   }
 }
 

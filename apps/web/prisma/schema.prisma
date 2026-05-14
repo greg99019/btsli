@@ -13,6 +13,22 @@ enum Role {
   COACH
   ORG_ADMIN
   SUPER_ADMIN
+  CONSULTANT
+  MANAGER
+  PARTICIPANT
+}
+
+enum ModuleCategory {
+  GETTING_STARTED
+  WORKPLACE_SYSTEMS
+  COMMUNICATION
+  LEADERSHIP
+  SOPS
+  ACCOUNTABILITY
+  CUSTOMER_SERVICE
+  COMPLIANCE_SAFETY
+  TEAM_COLLABORATION
+  PERFORMANCE_IMPROVEMENT
 }
 
 enum UrgencyLevel {
@@ -67,10 +83,23 @@ model User {
   name         String
   passwordHash String
   role         Role     @default(CLIENT)
+  orgId        String?  @db.ObjectId
+  jobTitle     String?
+  department   String?
+  isActive     Boolean  @default(true)
   createdAt    DateTime @default(now())
 
-  coachProfile CoachProfile?
-  appointments Appointment[]
+  org               Organization?      @relation(fields: [orgId], references: [id])
+  coachProfile      CoachProfile?
+  appointments      Appointment[]
+  announcements     Announcement[]
+  liveSessions      LiveSession[]      @relation("SessionHost")
+  moduleAssignments ModuleAssignment[]
+  moduleProgress    ModuleProgress[]
+  moduleCompletions ModuleCompletion[]
+  quizAttempts      QuizAttempt[]
+  notifications     Notification[]
+  certificates      WorkplaceCertificate[]
 }
 
 model CoachProfile {
@@ -337,4 +366,198 @@ model ConsultantBriefing {
   draftKpis          String[]
 
   lead LeadCapture @relation(fields: [leadId], references: [id])
+}
+
+// ── Multi-Tenant Organization ─────────────────────────────────────────────────
+
+model Organization {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  slug        String   @unique
+  industry    String?
+  sizeRange   String?
+  logoUrl     String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users             User[]
+  announcements     Announcement[]
+  liveSessions      LiveSession[]
+  moduleAssignments ModuleAssignment[]
+}
+
+// ── Training Module System ────────────────────────────────────────────────────
+
+model TrainingModule {
+  id               String         @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  description      String
+  longDescription  String?
+  category         ModuleCategory
+  videoUrl         String?
+  videoType        String?
+  thumbnailUrl     String?
+  pdfResources     String[]
+  downloadFiles    String[]
+  estimatedMinutes Int            @default(30)
+  isRequired       Boolean        @default(false)
+  passingScore     Float          @default(0.75)
+  minWatchPct      Float          @default(0.8)
+  isPublished      Boolean        @default(false)
+  orderIdx         Int            @default(0)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  questions         TrainingQuestion[]
+  assignments       ModuleAssignment[]
+  progress          ModuleProgress[]
+  completions       ModuleCompletion[]
+  certificates      WorkplaceCertificate[]
+}
+
+model TrainingQuestion {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  moduleId String @db.ObjectId
+  prompt   String
+  orderIdx Int    @default(0)
+
+  module  TrainingModule   @relation(fields: [moduleId], references: [id])
+  choices TrainingChoice[]
+  answers QuizAnswer[]
+}
+
+model TrainingChoice {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  questionId String  @db.ObjectId
+  text       String
+  isCorrect  Boolean @default(false)
+
+  question TrainingQuestion @relation(fields: [questionId], references: [id])
+}
+
+model ModuleAssignment {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  moduleId  String    @db.ObjectId
+  orgId     String?   @db.ObjectId
+  userId    String?   @db.ObjectId
+  dueDate   DateTime?
+  createdAt DateTime  @default(now())
+
+  module TrainingModule @relation(fields: [moduleId], references: [id])
+  org    Organization?  @relation(fields: [orgId], references: [id])
+  user   User?          @relation(fields: [userId], references: [id])
+}
+
+model ModuleProgress {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String    @db.ObjectId
+  moduleId     String    @db.ObjectId
+  watchedPct   Float     @default(0)
+  lastSecond   Int       @default(0)
+  quizScore    Float?
+  quizAttempts Int       @default(0)
+  completed    Boolean   @default(false)
+  completedAt  DateTime?
+  startedAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user   User           @relation(fields: [userId], references: [id])
+  module TrainingModule @relation(fields: [moduleId], references: [id])
+
+  @@unique([userId, moduleId])
+}
+
+model ModuleCompletion {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  moduleId    String   @db.ObjectId
+  score       Float?
+  completedAt DateTime @default(now())
+
+  user   User           @relation(fields: [userId], references: [id])
+  module TrainingModule @relation(fields: [moduleId], references: [id])
+
+  @@unique([userId, moduleId])
+}
+
+model QuizAttempt {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  moduleId    String   @db.ObjectId
+  score       Float?
+  passed      Boolean  @default(false)
+  submittedAt DateTime @default(now())
+
+  user    User         @relation(fields: [userId], references: [id])
+  answers QuizAnswer[]
+}
+
+model QuizAnswer {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  attemptId  String @db.ObjectId
+  questionId String @db.ObjectId
+  choiceId   String @db.ObjectId
+
+  attempt  QuizAttempt      @relation(fields: [attemptId], references: [id])
+  question TrainingQuestion @relation(fields: [questionId], references: [id])
+}
+
+// ── Communication & Notifications ─────────────────────────────────────────────
+
+model Announcement {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  orgId     String?  @db.ObjectId
+  title     String
+  body      String
+  type      String   @default("info")
+  authorId  String   @db.ObjectId
+  pinned    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  org    Organization? @relation(fields: [orgId], references: [id])
+  author User          @relation(fields: [authorId], references: [id])
+}
+
+model LiveSession {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  orgId        String?  @db.ObjectId
+  title        String
+  description  String?
+  hostId       String   @db.ObjectId
+  scheduledAt  DateTime
+  durationMin  Int      @default(60)
+  joinUrl      String?
+  recordingUrl String?
+  createdAt    DateTime @default(now())
+
+  org  Organization? @relation(fields: [orgId], references: [id])
+  host User          @relation("SessionHost", fields: [hostId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  type      String
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  link      String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model WorkplaceCertificate {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String   @db.ObjectId
+  moduleId String   @db.ObjectId
+  certId   String   @unique
+  issuedAt DateTime @default(now())
+  score    Float?
+
+  user   User           @relation(fields: [userId], references: [id])
+  module TrainingModule @relation(fields: [moduleId], references: [id])
+
+  @@unique([userId, moduleId])
 }

@@ -1,4 +1,7 @@
-'use client'
+const fs = require('fs')
+const path = require('path')
+
+const content = `'use client'
 import { useEffect, useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
@@ -75,7 +78,7 @@ export default function TrainingViewer() {
       } catch { /* noop */ }
     }
     if (type === 'vimeo') {
-      const m = url.match(/vimeo\.com\/(\d+)/)
+      const m = url.match(/vimeo\\.com\\/(\\d+)/)
       if (m) return 'https://player.vimeo.com/video/' + m[1]
     }
     return url
@@ -195,3 +198,8 @@ export default function TrainingViewer() {
     </PlatformLayout>
   )
 }
+`
+
+const outPath = path.join(__dirname, 'src', 'app', 'training', '[id]', 'page.tsx')
+fs.writeFileSync(outPath, content, 'utf8')
+console.log('Written:', outPath)
