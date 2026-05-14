@@ -1,4 +1,7 @@
-'use client'
+const fs = require('fs')
+const path = require('path')
+
+const content = `'use client'
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -160,3 +163,8 @@ export default function PlatformLayout({ user, children }: Props) {
     </div>
   )
 }
+`
+
+const outPath = path.join(__dirname, 'src', 'components', 'layout', 'PlatformLayout.tsx')
+fs.writeFileSync(outPath, content, 'utf8')
+console.log('Written:', outPath)
