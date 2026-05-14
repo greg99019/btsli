@@ -1,12 +1,14 @@
 import { createServerClient } from '@supabase/ssr'
 import { createClient as createSupabaseAdminClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
+import { getSupabaseAdminEnv, getSupabasePublicEnv } from './env'
 
 export function createClient() {
   const cookieStore = cookies()
+  const { url, anonKey } = getSupabasePublicEnv()
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url,
+    anonKey,
     {
       cookies: {
         getAll() {
@@ -28,9 +30,10 @@ export function createClient() {
 
 // Service-role client — bypasses RLS, use only in trusted server code
 export function createAdminClient() {
+  const { url, serviceRoleKey } = getSupabaseAdminEnv()
   return createSupabaseAdminClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    url,
+    serviceRoleKey,
     { auth: { autoRefreshToken: false, persistSession: false } }
   )
 }

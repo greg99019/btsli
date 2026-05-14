@@ -1,12 +1,26 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { hasSupabasePublicEnv } from '@/lib/supabase/env'
 
 const PLATFORM_ROUTES = ['/dashboard', '/training', '/progress', '/certificates', '/schedule', '/admin']
 const AUTH_ROUTES = ['/login', '/reset-password', '/update-password']
 const ADMIN_ROLES = ['super_admin', 'consultant', 'org_admin', 'manager']
+const SETUP_ROUTE = '/setup/supabase'
 
 export async function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname
+
+  if (!hasSupabasePublicEnv()) {
+    if (!pathname.startsWith(SETUP_ROUTE) && !pathname.startsWith('/_next') && pathname !== '/favicon.ico') {
+      const url = request.nextUrl.clone()
+      url.pathname = SETUP_ROUTE
+      return NextResponse.redirect(url)
+    }
+
+    return NextResponse.next({ request })
+  }
+
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
@@ -29,7 +43,6 @@ export async function middleware(request: NextRequest) {
   )
 
   const { data: { user } } = await supabase.auth.getUser()
-  const pathname = request.nextUrl.pathname
 
   // Protect platform routes from unauthenticated users
   if (PLATFORM_ROUTES.some(r => pathname.startsWith(r)) && !user) {
