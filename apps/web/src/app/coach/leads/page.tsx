@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? 'http://localhost:4100';
+const API_BASE = '';
 
 const RISK_COLORS: Record<string, string> = {
   HIGH: 'bg-red-100 text-red-700 border-red-200',
@@ -82,7 +82,7 @@ export default function LeadsPage() {
     const token = localStorage.getItem('token');
     if (!token) { router.push('/login'); return; }
 
-    fetch(`${API_BASE}/intake/leads`, {
+    fetch(`${API_BASE}/api/intake/leads`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => {
@@ -98,7 +98,7 @@ export default function LeadsPage() {
     setDetailLoading(true);
     const token = localStorage.getItem('token') ?? '';
     try {
-      const res = await fetch(`${API_BASE}/intake/lead/${id}`, {
+      const res = await fetch(`${API_BASE}/api/intake/lead/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error('Could not load lead');

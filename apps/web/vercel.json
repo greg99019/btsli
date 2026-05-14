@@ -5,6 +5,6 @@
   "installCommand": "npm install",
   "framework": "nextjs",
   "env": {
-    "NEXT_PUBLIC_API_BASE": "https://btfd-283a411fb274.herokuapp.com"
+    "NEXT_PUBLIC_API_BASE": "https://api-hazel-phi-50.vercel.app"
   }
 }

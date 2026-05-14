@@ -2,7 +2,7 @@
 import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? 'http://localhost:4100';
+const API_BASE = '';
 
 type Ratings = {
   communication: number[];
@@ -219,7 +219,7 @@ function AssessmentForm() {
     setError('');
     try {
       const payload = { ...ratings, ...text };
-      const res = await fetch(`${API_BASE}/intake/assessment/${leadId}`, {
+      const res = await fetch(`${API_BASE}/api/intake/assessment/${leadId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

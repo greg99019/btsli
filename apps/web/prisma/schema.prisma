@@ -1,0 +1,340 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x", "rhel-openssl-3.0.x"]
+}
+
+enum Role {
+  CLIENT
+  COACH
+  ORG_ADMIN
+  SUPER_ADMIN
+}
+
+enum UrgencyLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum OrgType {
+  NONPROFIT
+  GOVERNMENT
+  CORPORATE
+  SMALL_BUSINESS
+  EDUCATION
+  HEALTHCARE
+  OTHER
+}
+
+enum BudgetRange {
+  UNDER_5K
+  FIVE_TO_15K
+  FIFTEEN_TO_30K
+  THIRTY_TO_60K
+  OVER_60K
+  NOT_SURE
+}
+
+enum ServiceCategory {
+  INDIVIDUAL
+  FAMILY
+  ORGANIZATIONAL
+}
+
+enum LessonType {
+  VIDEO
+  READING
+  QUIZ
+  EXAM
+  ASSIGNMENT
+}
+
+enum ProgressStatus {
+  LOCKED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model User {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(CLIENT)
+  createdAt    DateTime @default(now())
+
+  coachProfile CoachProfile?
+  appointments Appointment[]
+}
+
+model CoachProfile {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String  @unique @db.ObjectId
+  bio       String?
+  timezone  String  @default("America/New_York")
+
+  user         User               @relation(fields: [userId], references: [id])
+  services     CoachService[]
+  slots        AvailabilitySlot[]
+  appointments Appointment[]
+}
+
+model Service {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  slug        String          @unique
+  category    ServiceCategory
+  description String
+  priceMin    Int
+  priceMax    Int
+  durationMin Int
+  unitLabel   String
+  focusAreas  String[]
+  active      Boolean         @default(true)
+
+  coaches      CoachService[]
+  appointments Appointment[]
+}
+
+model CoachService {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  coachId   String @db.ObjectId
+  serviceId String @db.ObjectId
+
+  coach   CoachProfile @relation(fields: [coachId], references: [id])
+  service Service      @relation(fields: [serviceId], references: [id])
+
+  @@unique([coachId, serviceId])
+}
+
+model AvailabilitySlot {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  coachId String   @db.ObjectId
+  startAt DateTime
+  endAt   DateTime
+
+  coach CoachProfile @relation(fields: [coachId], references: [id])
+}
+
+model Appointment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  clientId  String   @db.ObjectId
+  coachId   String   @db.ObjectId
+  serviceId String   @db.ObjectId
+  startAt   DateTime
+  endAt     DateTime
+  status    String   @default("BOOKED")
+  notes     String?
+
+  client  User         @relation(fields: [clientId], references: [id])
+  coach   CoachProfile @relation(fields: [coachId], references: [id])
+  service Service      @relation(fields: [serviceId], references: [id])
+}
+
+model Course {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  description  String?
+  published    Boolean @default(false)
+  ownerCoachId String
+
+  modules     Module[]
+  enrollments Enrollment[]
+}
+
+model Module {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  courseId String @db.ObjectId
+  title    String
+  orderIdx Int
+
+  course  Course   @relation(fields: [courseId], references: [id])
+  lessons Lesson[]
+}
+
+model Lesson {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  moduleId    String     @db.ObjectId
+  title       String
+  type        LessonType
+  orderIdx    Int
+  videoUrl    String?
+  readingHtml String?
+
+  module     Module      @relation(fields: [moduleId], references: [id])
+  assessment Assessment?
+}
+
+model Enrollment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  courseId  String   @db.ObjectId
+  createdAt DateTime @default(now())
+
+  course Course @relation(fields: [courseId], references: [id])
+
+  @@unique([userId, courseId], name: "userId_courseId")
+}
+
+model Progress {
+  id         String         @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String
+  lessonId   String
+  status     ProgressStatus @default(LOCKED)
+  percent    Float          @default(0)
+  lastSecond Int            @default(0)
+
+  @@unique([userId, lessonId])
+}
+
+model Assessment {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  lessonId        String @unique @db.ObjectId
+  title           String
+  timeLimitMin    Int?
+  attemptsAllowed Int    @default(1)
+  passingScore    Float?
+
+  lesson    Lesson     @relation(fields: [lessonId], references: [id])
+  questions Question[]
+  attempts  Attempt[]
+}
+
+model Question {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  assessmentId String @db.ObjectId
+  prompt       String
+  type         String
+  points       Float
+
+  assessment Assessment @relation(fields: [assessmentId], references: [id])
+  choices    Choice[]
+  answers    Answer[]
+}
+
+model Choice {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  questionId String  @db.ObjectId
+  text       String
+  isCorrect  Boolean @default(false)
+
+  question Question @relation(fields: [questionId], references: [id])
+}
+
+model Attempt {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  assessmentId String    @db.ObjectId
+  userId       String
+  startedAt    DateTime  @default(now())
+  submittedAt  DateTime?
+  score        Float?
+  status       String    @default("IN_PROGRESS")
+
+  assessment Assessment @relation(fields: [assessmentId], references: [id])
+  answers    Answer[]
+}
+
+model Answer {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  attemptId     String  @db.ObjectId
+  questionId    String  @db.ObjectId
+  choiceId      String?
+  textAnswer    String?
+  pointsAwarded Float?
+  feedback      String?
+
+  attempt  Attempt  @relation(fields: [attemptId], references: [id])
+  question Question @relation(fields: [questionId], references: [id])
+
+  @@unique([attemptId, questionId], name: "attemptId_questionId")
+}
+
+model Certificate {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String
+  courseId String
+  issuedAt DateTime @default(now())
+  title    String
+  scorePct Float?
+
+  @@unique([userId, courseId])
+}
+
+// ── Lead Capture & Intake ────────────────────────────────────────────────────
+
+model LeadCapture {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+
+  orgName             String
+  contactName         String
+  contactEmail        String
+  contactPhone        String?
+  role                String
+  orgType             OrgType
+  teamSize            String
+  departmentsInvolved String[]
+
+  mainChallenge       String
+  challengeTags       String[]
+  whatIsBreaking      String
+  desiredOutcome      String
+  urgencyLevel        UrgencyLevel
+  currentSystems      String[]
+
+  budgetRange   BudgetRange
+  preferredTime String?
+  additionalNotes String?
+
+  leadScore     Int     @default(0)
+  suggestedPath String?
+  status        String  @default("NEW")
+
+  assessment SystemsAssessment?
+  briefing   ConsultantBriefing?
+}
+
+model SystemsAssessment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  leadId    String   @unique @db.ObjectId
+  createdAt DateTime @default(now())
+
+  communication       Float
+  trainingOnboarding  Float
+  accountability      Float
+  documentation       Float
+  teamCoordination    Float
+  performanceTracking Float
+  leadershipAlignment Float
+
+  answers         Json
+  totalScore      Float
+  weakestAreas    String[]
+  systemsSnapshot String
+
+  lead LeadCapture @relation(fields: [leadId], references: [id])
+}
+
+model ConsultantBriefing {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  leadId    String   @unique @db.ObjectId
+  createdAt DateTime @default(now())
+
+  clientSummary      String
+  mainPainPoints     String[]
+  riskLevel          String
+  likelyRootCauses   String[]
+  suggestedQuestions String[]
+  recommendedService String
+  draftFollowUpEmail String
+  draftProposalAngle String
+  draftKpis          String[]
+
+  lead LeadCapture @relation(fields: [leadId], references: [id])
+}

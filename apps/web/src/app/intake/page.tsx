@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? 'http://localhost:4100';
+const API_BASE = '';
 
 const ORG_TYPES = [
   { value: 'NONPROFIT', label: 'Nonprofit Organization' },
@@ -234,7 +234,7 @@ export default function IntakePage() {
         ...form,
         teamSize: form.teamSize,
       };
-      const res = await fetch(`${API_BASE}/intake/lead`, {
+      const res = await fetch(`${API_BASE}/api/intake/lead`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

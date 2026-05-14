@@ -53,7 +53,7 @@ export class IntakeService {
         urgencyLevel: dto.urgencyLevel,
         currentSystems: dto.currentSystems ?? [],
         budgetRange: dto.budgetRange,
-        preferredTime: dto.preferredTime ?? null,
+        preferredTime: Array.isArray(dto.preferredTime) ? dto.preferredTime.join(', ') : (dto.preferredTime ?? null),
         additionalNotes: dto.additionalNotes ?? null,
         leadScore,
         suggestedPath,
