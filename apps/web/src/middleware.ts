@@ -10,9 +10,13 @@ const SETUP_ROUTE = '/setup/supabase'
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
+  const needsSupabase =
+    PLATFORM_ROUTES.some(r => pathname.startsWith(r)) ||
+    AUTH_ROUTES.includes(pathname) ||
+    pathname.startsWith('/auth/')
 
   if (!hasSupabasePublicEnv()) {
-    if (!pathname.startsWith(SETUP_ROUTE) && !pathname.startsWith('/_next') && pathname !== '/favicon.ico') {
+    if (needsSupabase && !pathname.startsWith(SETUP_ROUTE) && !pathname.startsWith('/_next') && pathname !== '/favicon.ico') {
       const url = request.nextUrl.clone()
       url.pathname = SETUP_ROUTE
       return NextResponse.redirect(url)
