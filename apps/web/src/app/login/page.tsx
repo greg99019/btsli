@@ -1,10 +1,18 @@
 ﻿'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<LoginPageSkeleton />}>
+      <LoginPageContent />
+    </Suspense>
+  )
+}
+
+function LoginPageContent() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -38,7 +46,7 @@ export default function LoginPage() {
             <span className="text-white font-bold text-2xl">BT</span>
           </div>
           <h1 className="text-2xl font-bold text-slate-800">Sign in to your account</h1>
-          <p className="text-slate-500 mt-1 text-sm">BTSLIâ„¢ Workplace Training Platform</p>
+          <p className="text-slate-500 mt-1 text-sm">BTSLI™ Workplace Training Platform</p>
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
@@ -80,12 +88,30 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full py-3 bg-slate-800 text-white text-sm font-semibold rounded-lg hover:bg-slate-900 disabled:opacity-50 transition-colors"
             >
-              {loading ? 'Signing inâ€¦' : 'Sign in'}
+              {loading ? 'Signing in…' : 'Sign in'}
             </button>
           </form>
           <p className="mt-6 text-center text-xs text-slate-500">
             Having trouble? Contact your organization administrator.
           </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function LoginPageSkeleton() {
+  return (
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+          <div className="space-y-4 animate-pulse">
+            <div className="h-6 w-40 bg-slate-200 rounded mx-auto" />
+            <div className="h-4 w-56 bg-slate-100 rounded mx-auto" />
+            <div className="h-11 w-full bg-slate-100 rounded-lg" />
+            <div className="h-11 w-full bg-slate-100 rounded-lg" />
+            <div className="h-11 w-full bg-slate-200 rounded-lg" />
+          </div>
         </div>
       </div>
     </div>
