@@ -19,7 +19,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
   const progress = await prisma.moduleProgress.upsert({
     where: { userId_moduleId: { userId: user.id, moduleId: params.id } },
     create: { userId: user.id, moduleId: params.id, watchedPct: watchedPct ?? 0, lastSecond: lastSecond ?? 0, completed, completedAt: completed ? new Date() : null },
-    update: { watchedPct: watchedPct ?? 0, lastSecond: lastSecond ?? 0, ...(completed && !undefined ? { completed: true, completedAt: new Date() } : {}) },
+    update: { watchedPct: watchedPct ?? 0, lastSecond: lastSecond ?? 0, ...(completed ? { completed: true, completedAt: new Date() } : {}) },
   })
 
   if (completed) {
