@@ -162,14 +162,18 @@ create table public.training_assignments (
 create table public.announcements (
   id                uuid    primary key default gen_random_uuid(),
   title             text    not null,
-  body              text    not null,
+  body              text    not null default '',
+  content           text    not null default '',
   announcement_type text    not null default 'info'
     check (announcement_type in ('info','warning','success','urgent')),
+  type              text    not null default 'info'
+    check (type in ('info','warning','success','urgent')),
   organization_id   uuid    references public.organizations(id) on delete cascade,
   created_by        uuid    references public.profiles(id) on delete set null,
   published_at      timestamptz not null default now(),
   expires_at        timestamptz,
   is_pinned         boolean not null default false,
+  is_visible        boolean not null default true,
   created_at        timestamptz not null default now()
 );
 

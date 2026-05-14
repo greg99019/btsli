@@ -1,4 +1,4 @@
-export type UserRole = 'super_admin' | 'consultant' | 'org_admin' | 'manager' | 'participant'
+﻿export type UserRole = 'super_admin' | 'consultant' | 'org_admin' | 'manager' | 'participant'
 export type AnnouncementType = 'info' | 'warning' | 'success' | 'urgent'
 export type SessionType = 'live' | 'workshop' | 'check_in' | 'webinar'
 export type QuestionType = 'multiple_choice' | 'true_false' | 'short_answer'
@@ -31,7 +31,7 @@ export interface Profile {
   onboarding_complete: boolean
   created_at: string
   updated_at: string
-  organizations?: Organization
+  organizations?: Partial<Organization> | null
 }
 
 export interface ModuleCategory {
@@ -66,10 +66,10 @@ export interface TrainingModule {
   total_enrollments: number
   created_at: string
   updated_at: string
-  module_categories?: ModuleCategory
-  user_progress?: UserProgress[]
-  module_resources?: ModuleResource[]
-  quizzes?: Quiz[]
+  module_categories?: Partial<ModuleCategory> | null
+  user_progress?: Partial<UserProgress>[]
+  module_resources?: Partial<ModuleResource>[]
+  quizzes?: Partial<Quiz>[]
 }
 
 export interface ModuleResource {
@@ -94,7 +94,7 @@ export interface Quiz {
   time_limit_minutes: number | null
   randomize_questions: boolean
   created_at: string
-  quiz_questions?: QuizQuestion[]
+  quiz_questions?: Partial<QuizQuestion>[]
 }
 
 export interface QuizQuestion {
@@ -106,13 +106,14 @@ export interface QuizQuestion {
   explanation: string | null
   sort_order: number
   created_at: string
-  quiz_answer_options?: QuizAnswerOption[]
+  quiz_answer_options?: Partial<QuizAnswerOption>[]
 }
 
 export interface QuizAnswerOption {
   id: string
   question_id: string
   answer_text: string
+  option_text: string    // alias used in some pages
   is_correct: boolean
   sort_order: number
 }
@@ -133,7 +134,7 @@ export interface UserProgress {
   quiz_score: number | null
   quiz_passed: boolean | null
   quiz_attempts: number
-  training_modules?: TrainingModule
+  training_modules?: Partial<TrainingModule> | null
 }
 
 export interface Certificate {
@@ -143,8 +144,8 @@ export interface Certificate {
   organization_id: string | null
   certificate_number: string
   issued_at: string
-  training_modules?: TrainingModule
-  profiles?: Profile
+  training_modules?: Partial<TrainingModule> | null
+  profiles?: Partial<Profile> | null
 }
 
 export interface TrainingAssignment {
@@ -156,19 +157,23 @@ export interface TrainingAssignment {
   due_date: string | null
   is_required: boolean
   created_at: string
-  training_modules?: TrainingModule
+  training_modules?: Partial<TrainingModule> | null
 }
 
 export interface Announcement {
   id: string
   title: string
   body: string
+  content: string
   announcement_type: AnnouncementType
+  type: AnnouncementType
   organization_id: string | null
   created_by: string | null
   published_at: string
   expires_at: string | null
   is_pinned: boolean
+  is_visible: boolean
+  is_active: boolean   // alias for is_visible used in some pages
   created_at: string
 }
 
@@ -181,16 +186,19 @@ export interface LiveSession {
   duration_minutes: number
   meeting_url: string | null
   facilitator_id: string | null
+  facilitator_name: string | null   // alias / display field
   organization_id: string | null
   max_attendees: number | null
   is_public: boolean
   created_at: string
-  session_rsvps?: SessionRSVP[]
+  session_rsvps?: Partial<SessionRSVP>[]
 }
 
 export interface SessionRSVP {
   id: string
   session_id: string
   user_id: string
+  status: string
   created_at: string
 }
+

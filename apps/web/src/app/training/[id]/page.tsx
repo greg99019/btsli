@@ -290,7 +290,7 @@ export default function TrainingModulePage() {
                               onChange={() => setQuizAnswers(prev => ({ ...prev, [q.id]: opt.id }))}
                               className="text-blue-600"
                             />
-                            <span className="text-sm text-slate-700">{opt.option_text}</span>
+                            <span className="text-sm text-slate-700">{opt.answer_text ?? opt.option_text}</span>
                           </label>
                         ))}
                       </div>
