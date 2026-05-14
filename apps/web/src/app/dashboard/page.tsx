@@ -45,7 +45,7 @@ export default function DashboardPage() {
         supabase
           .from('announcements')
           .select('*')
-          .eq('is_active', true)
+          .eq('is_visible', true)
           .order('created_at', { ascending: false })
           .limit(3),
         supabase

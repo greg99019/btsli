@@ -57,7 +57,7 @@ export default function AdminAnnouncementsPage() {
           content: form.content,
           type: form.type,
           organization_id: profile?.organization_id ?? null,
-          is_active: true,
+          is_visible: true,
           created_by: profile?.id,
         })
         .select()
@@ -84,8 +84,8 @@ export default function AdminAnnouncementsPage() {
   }
 
   const toggleActive = async (a: Announcement) => {
-    await supabase.from('announcements').update({ is_active: !a.is_active }).eq('id', a.id)
-    setAnnouncements(prev => prev.map(ann => ann.id === a.id ? { ...ann, is_active: !ann.is_active } : ann))
+    await supabase.from('announcements').update({ is_visible: !a.is_visible }).eq('id', a.id)
+    setAnnouncements(prev => prev.map(ann => ann.id === a.id ? { ...ann, is_visible: !ann.is_visible, is_active: !ann.is_active } : ann))
   }
 
   if (loading) return <div className="flex h-screen items-center justify-center"><div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" /></div>
@@ -150,15 +150,15 @@ export default function AdminAnnouncementsPage() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${typeColors[a.type]}`}>{a.type}</span>
-                  {!a.is_active && <span className="text-xs text-slate-400">Hidden</span>}
+                  {!a.is_visible && <span className="text-xs text-slate-400">Hidden</span>}
                 </div>
                 <p className="text-sm font-semibold text-slate-800">{a.title}</p>
                 <p className="text-xs text-slate-500 mt-0.5 line-clamp-2">{a.content}</p>
                 <p className="text-xs text-slate-400 mt-1">{new Date(a.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
-                <button onClick={() => toggleActive(a)} className={`text-xs px-2.5 py-1 rounded-full font-medium transition-colors ${a.is_active ? 'bg-emerald-100 text-emerald-700 hover:bg-slate-100 hover:text-slate-600' : 'bg-slate-100 text-slate-600 hover:bg-emerald-100 hover:text-emerald-700'}`}>
-                  {a.is_active ? 'Visible' : 'Hidden'}
+                <button onClick={() => toggleActive(a)} className={`text-xs px-2.5 py-1 rounded-full font-medium transition-colors ${a.is_visible ? 'bg-emerald-100 text-emerald-700 hover:bg-slate-100 hover:text-slate-600' : 'bg-slate-100 text-slate-600 hover:bg-emerald-100 hover:text-emerald-700'}`}>
+                  {a.is_visible ? 'Visible' : 'Hidden'}
                 </button>
                 <button onClick={() => handleEdit(a)} className="text-xs text-blue-600 hover:text-blue-700 px-2 py-1 rounded hover:bg-blue-50">Edit</button>
                 <button onClick={() => handleDelete(a.id)} className="text-xs text-red-500 hover:text-red-700 px-2 py-1 rounded hover:bg-red-50">Delete</button>
