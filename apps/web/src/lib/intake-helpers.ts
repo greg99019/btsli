@@ -11,7 +11,7 @@ export function tagChallenge(mainChallenge = '', whatIsBreaking = ''): string[] 
   if (/accountab|follow.through|commit|responsib/.test(text)) tags.push('accountability');
   if (/coordinat|collaborat|department|team|handoff/.test(text)) tags.push('coordination');
   if (tags.length === 0) tags.push('general');
-  return [...new Set(tags)];
+  return Array.from(new Set(tags));
 }
 
 export function scoreLead(dto: Record<string, unknown>): number {
