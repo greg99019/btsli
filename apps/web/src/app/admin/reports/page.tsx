@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation'
 import PlatformLayout, { AuthUser } from '@/components/layout/PlatformLayout'
 
 interface Stats {
-  totalUsers: number; totalModules: number; totalCompletions: number; completionRate: number
-  recentCompletions: { userName: string; moduleName: string; completedAt: string; score?: number }[]
-  moduleStats: { moduleId: string; title: string; completions: number; avgScore?: number }[]
+  totalUsers: number; totalModules: number; totalCompletions: number; totalCerts: number
+  recentCompletions: { user: { name: string; email: string }; module: { title: string }; completedAt: string }[]
+  modules: { id: string; title: string; _count: { completions: number; progress: number } }[]
 }
 
 export default function ReportsPage() {
@@ -43,7 +43,7 @@ export default function ReportsPage() {
             { label: 'Total Users', value: stats?.totalUsers ?? 0 },
             { label: 'Modules', value: stats?.totalModules ?? 0 },
             { label: 'Completions', value: stats?.totalCompletions ?? 0 },
-            { label: 'Completion Rate', value: (stats?.completionRate ?? 0).toFixed(1) + '%' },
+            { label: 'Certificates', value: stats?.totalCerts ?? 0 },
           ].map(c => (
             <div key={c.label} className="bg-white border border-slate-200 rounded-2xl p-5">
               <p className="text-xs text-slate-500 uppercase tracking-wide font-medium">{c.label}</p>
@@ -53,15 +53,15 @@ export default function ReportsPage() {
         </div>
         <div className="bg-white border border-slate-200 rounded-2xl p-5">
           <h2 className="font-semibold text-slate-800 mb-4">Module Completion Rates</h2>
-          {!stats?.moduleStats.length ? <p className="text-sm text-slate-400">No data.</p> : (
+          {!(stats?.modules?.length) ? <p className="text-sm text-slate-400">No data.</p> : (
             <table className="w-full text-sm">
-              <thead><tr className="border-b border-slate-100 text-left text-xs text-slate-500 uppercase">{['Module','Completions','Avg Score'].map(h => <th key={h} className="pb-2 pr-4">{h}</th>)}</tr></thead>
+              <thead><tr className="border-b border-slate-100 text-left text-xs text-slate-500 uppercase">{['Module','Completions','Enrolled'].map(h => <th key={h} className="pb-2 pr-4">{h}</th>)}</tr></thead>
               <tbody>
-                {stats.moduleStats.map(m => (
-                  <tr key={m.moduleId} className="border-b border-slate-50 last:border-0">
+                {(stats.modules ?? []).map(m => (
+                  <tr key={m.id} className="border-b border-slate-50 last:border-0">
                     <td className="py-2.5 pr-4 text-slate-700">{m.title}</td>
-                    <td className="py-2.5 pr-4 text-blue-600 font-semibold">{m.completions}</td>
-                    <td className="py-2.5 text-emerald-600">{m.avgScore != null ? Math.round(m.avgScore * 100) + '%' : '-'}</td>
+                    <td className="py-2.5 pr-4 text-blue-600 font-semibold">{m._count.completions}</td>
+                    <td className="py-2.5 text-slate-500">{m._count.progress}</td>
                   </tr>
                 ))}
               </tbody>
@@ -70,15 +70,14 @@ export default function ReportsPage() {
         </div>
         <div className="bg-white border border-slate-200 rounded-2xl p-5">
           <h2 className="font-semibold text-slate-800 mb-4">Recent Completions</h2>
-          {!stats?.recentCompletions.length ? <p className="text-sm text-slate-400">No completions yet.</p> : (
+          {!(stats?.recentCompletions?.length) ? <p className="text-sm text-slate-400">No completions yet.</p> : (
             <table className="w-full text-sm">
-              <thead><tr className="border-b border-slate-100 text-left text-xs text-slate-500 uppercase">{['User','Module','Score','Date'].map(h => <th key={h} className="pb-2 pr-4">{h}</th>)}</tr></thead>
+              <thead><tr className="border-b border-slate-100 text-left text-xs text-slate-500 uppercase">{['User','Module','Date'].map(h => <th key={h} className="pb-2 pr-4">{h}</th>)}</tr></thead>
               <tbody>
-                {stats.recentCompletions.map((c, i) => (
+                {(stats.recentCompletions ?? []).map((c, i) => (
                   <tr key={i} className="border-b border-slate-50 last:border-0">
-                    <td className="py-2.5 pr-4 text-slate-700">{c.userName}</td>
-                    <td className="py-2.5 pr-4 text-slate-600">{c.moduleName}</td>
-                    <td className="py-2.5 pr-4 text-emerald-600">{c.score != null ? Math.round(c.score * 100) + '%' : '-'}</td>
+                    <td className="py-2.5 pr-4 text-slate-700">{c.user.name}</td>
+                    <td className="py-2.5 pr-4 text-slate-600">{c.module.title}</td>
                     <td className="py-2.5 text-slate-400 text-xs">{new Date(c.completedAt).toLocaleDateString()}</td>
                   </tr>
                 ))}
