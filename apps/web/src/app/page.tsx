@@ -1,3 +1,5 @@
+const CAPABILITY_STATEMENT_PATH = '/btsli-capability-statement.pdf';
+
 export default function Home() {
   return (
     <div className="space-y-12 sm:space-y-16 md:space-y-20">
@@ -24,10 +26,10 @@ export default function Home() {
             Behavioral Systems Consulting for Performance, Clarity, and Consistent Execution
           </h1>
           <h2 className="text-lg sm:text-2xl md:text-3xl text-white/95 max-w-4xl mx-auto font-normal drop-shadow-md text-balance">
-            Beyond The Surface Leadership Institute™, LLC designs and implements structured, behavioral systems that improve communication, strengthen leadership, and support consistent performance across organizations.
+            Beyond The Surface Leadership Institute™, LLC designs and implements structured, evidence-informed behavioral systems that improve communication, strengthen leadership execution, and support measurable performance across organizations.
           </h2>
           <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow px-1">
-            Organizations often operate within environments where communication, expectations, and follow-through are not consistently aligned across teams and systems.
+            BTSLI™ helps organizations move beyond fragmented training and personality-driven problem solving by building systems that create clarity, consistency, and repeatable execution.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap pt-2 sm:pt-4 max-w-md sm:max-w-none mx-auto">
             <a href="/intake" className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-2xl w-full sm:w-auto">
@@ -35,6 +37,14 @@ export default function Home() {
             </a>
             <a href="/about" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/95 text-blue-600 font-semibold rounded-lg shadow-xl hover:shadow-2xl hover:bg-white transition-all text-base sm:text-lg hover:scale-105 w-full sm:w-auto">
               Learn About Our Approach
+            </a>
+            <a
+              href={CAPABILITY_STATEMENT_PATH}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 sm:px-8 py-3 sm:py-4 border border-white/70 bg-white/10 text-white font-semibold rounded-lg shadow-xl hover:shadow-2xl hover:bg-white/20 transition-all text-base sm:text-lg hover:scale-105 w-full sm:w-auto"
+            >
+              View Capability Statement
             </a>
           </div>
 
@@ -50,7 +60,7 @@ export default function Home() {
               <svg className="w-5 h-5 text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>WOSB & EDWOSB Certified</span>
+              <span>WOSB & EDWOSB Certified Vendor</span>
             </div>
             <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
               <svg className="w-5 h-5 text-orange-300" fill="currentColor" viewBox="0 0 20 20">
@@ -66,7 +76,7 @@ export default function Home() {
       <section className="card bg-gradient-to-br from-blue-50 to-cyan-50">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 text-center">How Our Consulting Works</h2>
         <p className="text-center text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto text-sm sm:text-base">
-          Our approach is collaborative, structured, and results-oriented. Here's what to expect when you partner with BTSLI™:
+          Our engagement model is structured, implementation-focused, and designed for real-world performance improvement. Here's what to expect when you partner with BTSLI™:
         </p>
         <div className="grid md:grid-cols-4 gap-6">
           <div className="text-center">
@@ -75,7 +85,7 @@ export default function Home() {
             </div>
             <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-2">Initial Consultation</h3>
             <p className="text-gray-600 text-sm">
-              We'll discuss your organizational challenges, goals, and identify where systems need strengthening. No pressure, just conversation.
+              We assess your current challenges, operating conditions, and performance goals to determine where structure and alignment are needed.
             </p>
           </div>
           <div className="text-center">
@@ -143,7 +153,7 @@ export default function Home() {
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
               <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.9 02 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
               </svg>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Our Values</h3>
@@ -162,7 +172,7 @@ export default function Home() {
       <section className="card bg-gradient-to-br from-blue-50 to-cyan-50">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 text-center">About Beyond The Surface Leadership Institute™, LLC</h2>
         <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto text-sm sm:text-base">
-          We're a Behavioral Systems Consulting firm founded on evidence-informed practices, dedicated to helping organizations thrive.
+          BTSLI™ is a systems-based consulting institute grounded in academic training, behavioral science, and applied implementation practice.
         </p>
         <div className="max-w-5xl mx-auto space-y-6 text-gray-700 leading-relaxed">
           <p className="text-base sm:text-lg">
@@ -227,7 +237,7 @@ export default function Home() {
       <section className="card bg-gradient-to-br from-blue-50 to-cyan-50">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 text-center">Why Organizations Choose BTSLI™</h2>
         <p className="text-center text-gray-600 mb-8 sm:mb-10 max-w-3xl mx-auto text-sm sm:text-base">
-          Organizations partner with us because we deliver high-impact consulting designed for real-world application—not just knowledge transfer.
+          Organizations choose BTSLI™ because we deliver structured, evidence-informed systems that create clarity, consistency, and measurable performance outcomes.
         </p>
         
         <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -239,7 +249,8 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Correcting breakdowns in communication, follow-through, or accountability</h3>
+                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Behavioral-Systems Approach</h3>
+                <p className="text-gray-600 text-sm sm:text-base">We design structured systems that improve communication, performance, and operational flow instead of relying on personality-driven coaching.</p>
               </div>
             </div>
           </div>
@@ -252,7 +263,8 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Strengthening operations to improve consistency and efficiency</h3>
+                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Evidence-Informed Methodology</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Our frameworks are grounded in behavioral science, systems theory, applied performance systems, and instructional design.</p>
               </div>
             </div>
           </div>
@@ -265,7 +277,8 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Addressing staff burnout and high turnover</h3>
+                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Clarity and Structure</h3>
+                <p className="text-gray-600 text-sm sm:text-base">We translate complex organizational challenges into clear, repeatable processes teams can implement and sustain.</p>
               </div>
             </div>
           </div>
@@ -278,7 +291,8 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Preparing for growth, expansion, or leadership transition</h3>
+                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Scalable Solutions</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Our systems are designed for schools, nonprofits, workforce programs, youth-serving agencies, and government environments.</p>
               </div>
             </div>
           </div>
@@ -291,15 +305,18 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Establishing structure where greater clarity and consistency are needed</h3>
+                <h3 className="font-bold text-base sm:text-lg mb-2 text-gray-800">Measurable Outcomes and Professional Precision</h3>
+                <p className="text-gray-600 text-sm sm:text-base">We focus on implementation consistency, performance indicators, and research-aligned delivery that is contract-ready and evaluator-ready.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <p className="text-center text-lg text-gray-700 font-medium">
-          BTSLI™ provides a systems-level approach that supports clear, consistent, and sustainable performance across environments.
-        </p>
+        <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl p-6 sm:p-8 text-center">
+          <p className="text-lg sm:text-xl font-semibold leading-relaxed max-w-4xl mx-auto">
+            Built on academic training and applied systems practice, BTSLI™ operates as a systems-based consulting institute—not a coach, not a speaker, and not a generic training vendor.
+          </p>
+        </div>
       </section>
 
       {/* SECTION 4 - SERVICES */}
@@ -378,28 +395,28 @@ export default function Home() {
       <section className="card bg-gradient-to-br from-slate-50 to-blue-50">
         <h2 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-4 text-center">Our Approach</h2>
         <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto text-base sm:text-lg">
-          Our work is grounded in three core differentiators that drive measurable outcomes:
+          Our methodology is designed to move organizations from insight to implementation through systems that produce clear, sustainable results.
         </p>
 
         <div className="space-y-8 max-w-5xl mx-auto">
           <div className="bg-white rounded-xl p-5 sm:p-8 border-l-4 border-blue-600 shadow-lg">
             <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-3">Execution-First Performance Alignment™</h3>
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-              Transforms expectations into consistent practice through clarity, alignment, and structured follow-through.
+              Converts expectations into repeatable practice through role clarity, aligned communication, and structured follow-through.
             </p>
           </div>
 
           <div className="bg-white rounded-xl p-5 sm:p-8 border-l-4 border-cyan-600 shadow-lg">
             <h3 className="text-xl sm:text-2xl font-bold text-cyan-900 mb-3">Behavioral Systems Advantage™</h3>
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-              Strengthens the system so performance is less dependent on individuals and more embedded within routines, communication patterns, and workflows.
+              Strengthens the system so performance is embedded within routines, workflows, accountability structures, and communication patterns—not individual personality alone.
             </p>
           </div>
 
           <div className="bg-white rounded-xl p-5 sm:p-8 border-l-4 border-blue-700 shadow-lg">
             <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-3">Training-to-Implementation Continuum™</h3>
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-              Extends beyond training to support real-world application through structured implementation and follow-up support.
+              Extends beyond training to support real-world application through structured implementation, reinforcement, and measurable follow-up support.
             </p>
           </div>
         </div>
@@ -507,13 +524,13 @@ export default function Home() {
         </div>
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6">Ready to Improve Performance and Strengthen Communication?</h2>
         <p className="text-white/90 mb-8 sm:mb-10 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed">
-          If your organization is ready to improve performance, strengthen communication, and increase consistency—we're here to help.
+          If your organization is ready to improve performance, strengthen communication, and increase consistency through structured, evidence-informed systems, BTSLI™ is ready to support the work.
         </p>
         <a href="/schedule" className="inline-block w-full sm:w-auto px-6 sm:px-12 py-4 sm:py-6 bg-white text-blue-600 font-bold text-base sm:text-xl rounded-lg shadow-2xl hover:shadow-white/50 hover:scale-105 transition-all">
-          Schedule a Free Consultation
+          Schedule a Consultation
         </a>
         <p className="mt-6 text-white/80 text-sm">
-          No pressure, just conversation about your organization's needs.
+          Start with a focused conversation about your organization's systems, goals, and implementation needs.
         </p>
       </section>
 
@@ -522,7 +539,8 @@ export default function Home() {
         <h2 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-6 text-center">Contracting & Certifications</h2>
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <p className="text-base sm:text-lg text-gray-700">
-            Beyond The Surface Leadership Institute™, LLC (BTSLI™) is a certified:
+            Beyond The Surface Leadership Institute™, LLC (BTSLI™) is positioned to support procurement, subcontracting,
+            and institutional engagement as a certified:
           </p>
           
           <div className="grid md:grid-cols-2 gap-6">
@@ -548,8 +566,19 @@ export default function Home() {
           </div>
 
           <p className="text-base sm:text-lg text-gray-700 font-semibold pt-4">
-            We are eligible to contract with federal, state, and local agencies nationwide.
+            We are eligible to contract with federal, state, and local agencies nationwide and can support scopes of
+            work involving systems analysis, staff development, implementation support, and program design.
           </p>
+
+          <div className="pt-2">
+            <a
+              href={CAPABILITY_STATEMENT_PATH}
+              download
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+            >
+              Download Full Capability Statement
+            </a>
+          </div>
         </div>
       </section>
     </div>

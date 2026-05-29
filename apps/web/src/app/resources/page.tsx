@@ -1,3 +1,5 @@
+const CAPABILITY_STATEMENT_PATH = '/btsli-capability-statement.pdf';
+
 export default function ResourcesPage() {
   const articles = [
     {
@@ -68,14 +70,19 @@ export default function ResourcesPage() {
       <section className="card bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex-1">
-            <h2 className="text-2xl font-bold mb-2">Download Our Free Leadership Guide</h2>
+            <h2 className="text-2xl font-bold mb-2">View Our Capability Statement</h2>
             <p className="text-blue-100">
-              "5 Essential Practices for Trauma-Informed Leadership" — A comprehensive guide to build psychological safety and lead with impact.
+              Get the official BTSLI capability statement with service overview, certifications, and contracting-ready company information.
             </p>
           </div>
-          <button className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap">
-            Download Now
-          </button>
+          <a
+            href={CAPABILITY_STATEMENT_PATH}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap"
+          >
+            View Capability Statement
+          </a>
         </div>
       </section>
 
