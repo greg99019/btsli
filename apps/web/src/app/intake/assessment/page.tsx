@@ -243,7 +243,7 @@ function AssessmentForm() {
         <h1 className="text-3xl font-bold text-slate-800 mb-2">Organizational Systems Assessment</h1>
         <p className="text-slate-500 max-w-lg mx-auto">
           Rate each statement honestly. There are no right or wrong answers — your responses help us identify
-          where support will have the most impact.
+          where support, structure, and implementation focus will have the most impact.
         </p>
       </div>
 
@@ -291,8 +291,8 @@ function AssessmentForm() {
               </div>
             </div>
             <p className="text-slate-500 text-sm mb-6">
-              These answers will be turned into draft KPIs for your engagement and help us build a
-              meaningful baseline before we begin.
+              These answers help us draft meaningful KPIs, establish a baseline, and prepare for a more focused
+              consultation or scoped engagement discussion.
             </p>
 
             <div className="space-y-5">
@@ -395,14 +395,14 @@ function AssessmentForm() {
           ) : (
             <button onClick={submit} disabled={submitting} type="button"
               className="px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-lg font-semibold hover:shadow-lg transition disabled:opacity-60 disabled:cursor-not-allowed">
-              {submitting ? 'Submitting…' : 'Submit Assessment ✓'}
+              {submitting ? 'Submitting…' : 'Submit Assessment for Review ✓'}
             </button>
           )}
         </div>
       </div>
 
       <p className="text-center text-slate-400 text-xs mt-6">
-        Your responses are confidential. This assessment takes approximately 8–12 minutes.
+        Your responses are confidential and used only for review and consultation preparation. This assessment takes approximately 8–12 minutes.
       </p>
     </div>
   );

@@ -254,14 +254,14 @@ export default function IntakePage() {
       {/* Header */}
       <div className="text-center mb-10">
         <div className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-3">
-          Free · No Commitment
+          Initial Review · Institutional Intake
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-3">
           Start with a Systems Fit Assessment
         </h1>
         <p className="text-slate-600 text-lg max-w-xl mx-auto">
           Tell us where your organization is experiencing friction. We&apos;ll review your responses
-          and identify the systems, workflows, or support structures that may need strengthening.
+          and identify the systems, workflows, service scope, or support structures that may need strengthening.
         </p>
       </div>
 
@@ -373,7 +373,7 @@ export default function IntakePage() {
         {step === 1 && (
           <div className="space-y-5">
             <h2 className="text-xl font-bold text-slate-800 mb-1">Current State</h2>
-            <p className="text-slate-500 text-sm mb-4">Be as specific as you can — this helps us prepare something genuinely useful for you.</p>
+            <p className="text-slate-500 text-sm mb-4">Be as specific as you can — this helps us prepare a more useful review and engagement recommendation.</p>
 
             <div>
               <Label required>What is your main challenge?</Label>
@@ -449,10 +449,10 @@ export default function IntakePage() {
         {step === 3 && (
           <div className="space-y-5">
             <h2 className="text-xl font-bold text-slate-800 mb-1">Next Steps</h2>
-            <p className="text-slate-500 text-sm mb-4">Help us reach you at the right time.</p>
+            <p className="text-slate-500 text-sm mb-4">Help us coordinate follow-up and prepare for the right next-step conversation.</p>
 
             <div>
-              <Label>Preferred consultation times <span className="font-normal text-slate-400">(select all that work)</span></Label>
+              <Label>Preferred times for a follow-up consultation <span className="font-normal text-slate-400">(select all that work)</span></Label>
               <CheckGroup
                 options={PREFERRED_TIMES}
                 selected={form.preferredTime}
@@ -480,8 +480,8 @@ export default function IntakePage() {
                 className="mt-0.5 w-4 h-4 accent-blue-600"
               />
               <span className="text-sm text-slate-700">
-                I agree to be contacted by BTSLI™ regarding my assessment and consultation. I understand
-                my information will be used solely to prepare for our conversation and will not be sold
+                I agree to be contacted by BTSLI™ regarding my assessment, service fit review, and consultation.
+                I understand my information will be used solely to prepare for follow-up and will not be sold
                 or shared with third parties.
               </span>
             </label>
@@ -512,7 +512,7 @@ export default function IntakePage() {
           ) : (
             <button onClick={submit} disabled={submitting} type="button"
               className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:shadow-lg transition disabled:opacity-60 disabled:cursor-not-allowed">
-              {submitting ? 'Submitting…' : 'Submit Assessment Request'}
+              {submitting ? 'Submitting…' : 'Submit for Review'}
             </button>
           )}
         </div>
@@ -520,7 +520,7 @@ export default function IntakePage() {
 
       {/* Trust note */}
       <p className="text-center text-slate-400 text-xs mt-6">
-        Your information is confidential and used only to prepare your consultation.
+        Your information is confidential and used only to prepare your review and follow-up consultation.
         BTSLI™ is a WOSB &amp; EDWOSB certified firm.
       </p>
     </div>

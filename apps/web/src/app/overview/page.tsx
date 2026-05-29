@@ -226,31 +226,65 @@ export default function OverviewPage() {
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Why Organizations Choose BTSLI™</h2>
           <p className="text-gray-600 mt-3 max-w-3xl mx-auto leading-relaxed">
-            Organizations choose BTSLI™ because we deliver high-impact consulting and training designed for
-            real-world application—not just knowledge transfer.
+            Organizations choose BTSLI™ because we deliver structured, evidence-informed systems that create
+            clarity, consistency, and measurable performance outcomes across complex environments.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
-            "Correcting breakdowns in communication, follow-through, or accountability",
-            "Strengthening operations to improve consistency and efficiency",
-            "Addressing staff burnout and high turnover",
-            "Preparing for growth, expansion, or leadership transition",
-            "Establishing structure where greater clarity and consistency are needed",
+            {
+              title: "Behavioral-Systems Approach",
+              description:
+                "We do not rely on personality-driven coaching. We design structured systems that improve communication, performance, and operational flow.",
+            },
+            {
+              title: "Evidence-Informed Methodology",
+              description:
+                "Our frameworks are grounded in behavioral science, systems theory, applied performance systems, and instructional design rather than trends or motivational messaging.",
+            },
+            {
+              title: "Clarity and Structure",
+              description:
+                "We translate complex organizational challenges into clear, repeatable processes teams can understand, implement, and sustain.",
+            },
+            {
+              title: "Scalable Solutions",
+              description:
+                "Our systems are designed to work across schools, youth-serving agencies, nonprofits, workforce programs, and government environments with real-world constraints in mind.",
+            },
+            {
+              title: "Measurable Outcomes",
+              description:
+                "We focus on performance indicators, implementation consistency, and operational results—not vague concepts or abstract inspiration.",
+            },
+            {
+              title: "Professionalism and Precision",
+              description:
+                "Organizations trust BTSLI™ for direct, structured, research-aligned delivery that is evaluator-ready, contract-ready, and built for serious implementation.",
+            },
           ].map((item) => (
-            <div key={item} className="card flex items-start gap-4 hover:shadow-lg transition-shadow">
-              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div key={item.title} className="card hover:shadow-lg transition-shadow border-2 border-blue-100">
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               </div>
-              <p className="text-gray-700 leading-relaxed">{item}</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">{item.title}</h3>
+              <p className="text-gray-700 leading-relaxed">{item.description}</p>
             </div>
           ))}
-          <div className="card bg-gradient-to-br from-blue-600 to-cyan-700 text-white flex items-center justify-center text-center">
-            <p className="text-lg font-semibold leading-relaxed">
-              BTSLI™ provides a systems-level approach that supports clear, consistent, and sustainable performance
-              across environments.
+        </div>
+        <div className="card bg-gradient-to-br from-blue-600 to-cyan-700 text-white border-none">
+          <div className="max-w-4xl mx-auto text-center space-y-4">
+            <h3 className="text-2xl font-bold">Built on Academic Training and Applied Practice</h3>
+            <p className="text-white/95 leading-relaxed text-lg">
+              BTSLI™'s methodology is informed by doctoral-level training in psychology, graduate training in
+              therapeutic systems, behavioral science study, applied behavior analysis, consulting practice, and
+              extensive experience designing structured programs across complex service and educational environments.
+            </p>
+            <p className="text-white/85 leading-relaxed">
+              That foundation allows BTSLI™ to operate as a systems-based consulting institute—not a coach, not a
+              trainer, and not a personality-led brand.
             </p>
           </div>
         </div>
@@ -463,7 +497,8 @@ export default function OverviewPage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Certified &amp; Contract-Ready</h2>
             <p className="text-white/90 leading-relaxed">
               Beyond The Surface Leadership Institute™, LLC (BTSLI™) is eligible to contract with federal, state,
-              and local agencies nationwide.
+              and local agencies nationwide and is positioned to support institutional buyers seeking structured,
+              evidence-informed consulting, implementation support, and staff development.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row md:flex-col gap-4">
@@ -485,8 +520,8 @@ export default function OverviewPage() {
       <section className="card text-center bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 space-y-6">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Ready to Improve Performance?</h2>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-          If your organization is ready to improve performance, strengthen communication, and increase consistency —
-          we are ready to help.
+          If your organization, district, agency, or program is ready to improve performance, strengthen
+          communication, and increase consistency through structured systems, BTSLI™ is ready to help.
         </p>
         <a
           href="/schedule"

@@ -25,7 +25,7 @@ function ConfirmationContent() {
         </p>
         <p className="text-slate-500 mb-8">
           A member of our team will reach out within <strong>1–2 business days</strong> with your
-          pre-consultation summary and scheduling options.
+          pre-consultation summary, recommended next steps, and scheduling options.
         </p>
 
         <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 rounded-2xl p-6 mb-8 text-left">
@@ -33,9 +33,9 @@ function ConfirmationContent() {
           <ol className="space-y-3">
             {[
               { n: '1', title: 'Briefing preparation', desc: 'We review your assessment and generate your pre-call summary, including identified root causes and a recommended service path.' },
-              { n: '2', title: 'Consultation scheduling', desc: 'You\'ll receive an email with a personalized consultation link based on your preferred times.' },
-              { n: '3', title: 'Your consultation call', desc: 'We walk through your assessment together, answer your questions, and outline a clear path forward.' },
-              { n: '4', title: 'Proposal & decision', desc: 'If there\'s a fit, we\'ll send a tailored proposal aligned to your goals, budget, and timeline.' },
+              { n: '2', title: 'Consultation scheduling', desc: 'You\'ll receive an email with scheduling options aligned to your preferred times and engagement fit.' },
+              { n: '3', title: 'Consultation review', desc: 'We walk through your assessment, answer your questions, and outline a clear path forward.' },
+              { n: '4', title: 'Scope or proposal review', desc: 'If there\'s a fit, we\'ll send a tailored proposal or engagement scope aligned to your goals, budget, and timeline.' },
             ].map((step) => (
               <li key={step.n} className="flex gap-3">
                 <div className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -78,7 +78,7 @@ function ConfirmationContent() {
       </h1>
       <p className="text-lg text-slate-600 mb-3 max-w-lg mx-auto">
         A confirmation has been sent to your email. Your initial responses have been reviewed
-        and a recommended service path has been identified.
+        and will be used to identify the most appropriate service path.
       </p>
 
       {/* Assessment CTA */}
@@ -90,15 +90,15 @@ function ConfirmationContent() {
               One more step — complete the Systems Assessment
             </h2>
             <p className="text-orange-700 text-sm mb-4">
-              To make your consultation as focused and valuable as possible, please complete the
-              10-minute Systems Assessment. It helps us identify your specific breakdown points
-              and prepare a consultant briefing before we speak.
+              To make your consultation as focused and useful as possible, please complete the
+              10-minute Systems Assessment. It helps us identify specific breakdown points,
+              prepare a consultant briefing, and determine likely engagement priorities before we speak.
             </p>
             {leadId && (
               <a
                 href={`/intake/assessment?leadId=${leadId}`}
                 className="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-lg font-semibold hover:shadow-lg transition">
-                Start the Systems Assessment →
+                Continue to the Systems Assessment →
               </a>
             )}
           </div>
@@ -112,8 +112,8 @@ function ConfirmationContent() {
           {[
             { icon: '📧', text: 'Check your inbox for a confirmation email with your assessment link.' },
             { icon: '⏱️', text: 'The Systems Assessment takes about 8–12 minutes to complete.' },
-            { icon: '📞', text: 'A consultant will contact you within 1–2 business days to schedule your call.' },
-            { icon: '🔒', text: 'All responses are confidential and used only to prepare your consultation.' },
+            { icon: '📞', text: 'A consultant will contact you within 1–2 business days to coordinate the next-step conversation.' },
+            { icon: '🔒', text: 'All responses are confidential and used only to prepare your review and consultation.' },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-3">
               <span className="text-lg">{item.icon}</span>

@@ -11,7 +11,8 @@ export default function AboutPage() {
         </h1>
         <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
           A Behavioral Systems Consulting Firm dedicated to strengthening organizational performance through 
-          system-centered clarity, stability, and aligned purpose.
+          system-centered clarity, stability, and aligned purpose for organizations, districts, agencies, and
+          institutional partners.
         </p>
       </section>
 
@@ -148,8 +149,10 @@ export default function AboutPage() {
       <section className="card">
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Institute Approach</h2>
         <p className="text-center text-gray-600 mb-10 max-w-3xl mx-auto text-lg">
-          This combined expertise informs the Institute's approach to consulting and program design, ensuring 
-          that all services are:
+          BTSLI™'s approach is shaped by doctoral-level academic training, behavioral science study, applied
+          systems practice, instructional design experience, and professional consulting preparation. That
+          foundation allows the Institute to deliver structured, evidence-informed solutions rather than
+          personality-based coaching or one-time motivational training.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -159,9 +162,9 @@ export default function AboutPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-blue-900 mb-3">Structured</h3>
+            <h3 className="text-xl font-bold text-blue-900 mb-3">Evidence-Informed</h3>
             <p className="text-gray-700">
-              Built on evidence-informed frameworks and systematic approaches
+              Built on behavioral science, systems theory, applied performance systems, and instructional design.
             </p>
           </div>
 
@@ -171,9 +174,9 @@ export default function AboutPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-cyan-900 mb-3">Scalable</h3>
+            <h3 className="text-xl font-bold text-cyan-900 mb-3">Systems-Based</h3>
             <p className="text-gray-700">
-              Designed to grow and adapt across different organizational contexts
+              Designed to create clarity, consistency, and repeatable execution across complex organizational contexts.
             </p>
           </div>
 
@@ -183,9 +186,9 @@ export default function AboutPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-blue-900 mb-3">Performance-Driven</h3>
+            <h3 className="text-xl font-bold text-blue-900 mb-3">Implementation-Ready</h3>
             <p className="text-gray-700">
-              Aligned with sustainable, measurable outcomes across all environments
+              Structured for measurable outcomes, professional delivery, and real-world application—not abstract theory.
             </p>
           </div>
         </div>
@@ -210,8 +213,8 @@ export default function AboutPage() {
       <section className="text-center space-y-6 py-8">
         <h2 className="text-3xl font-bold text-gray-800">Partner With BTSLI™</h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-          If your organization is ready to improve performance, strengthen communication, and increase consistency 
-          through structured, evidence-informed systems:
+          If your organization, district, agency, or contracted program is ready to improve performance,
+          strengthen communication, and increase consistency through structured, evidence-informed systems:
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <a href="/schedule" className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
