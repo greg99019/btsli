@@ -12,7 +12,7 @@ export default function ServicesPage() {
         <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
           BTSLI™ provides structured, systems-based consulting and program development services designed to improve 
           performance, strengthen communication, and increase consistency across organizations, workforce programs, 
-          educational environments, and high-accountability systems.
+          educational environments, government-facing contracts, and high-accountability systems.
         </p>
       </section>
 
@@ -21,8 +21,9 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Evidence-Informed, Real-World Solutions</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            We partner with organizations to identify breakdowns, design structured systems, and implement 
-            sustainable solutions that support clear, consistent, and measurable performance across all levels.
+            BTSLI™ provides structured, evidence-informed systems designed to improve communication, performance,
+            and operational consistency. Our services are built for real-world implementation across schools,
+            workforce programs, nonprofits, youth-serving organizations, and government environments.
           </p>
         </div>
       </section>
@@ -148,10 +149,35 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* International Services Card */}
+      <div className="card bg-gradient-to-br from-blue-700 to-cyan-700 text-white border-none">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <h3 className="text-2xl font-bold mb-2">International Services &amp; Global Systems Support</h3>
+            <p className="text-blue-100 leading-relaxed mb-4">
+              BTSLI™ supports government agencies, NGOs, universities, workforce programs, education systems, and
+              community-serving partners across the Caribbean, global regions, and diaspora-serving environments through
+              behavioral systems consulting, capacity-building, and implementation support.
+            </p>
+            <a
+              href="/services/international"
+              className="inline-block px-6 py-3 bg-white text-blue-700 font-bold rounded-lg hover:shadow-lg hover:scale-105 transition-all"
+            >
+              Explore International Services
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Consultation Note */}
       <div className="text-center py-2">
         <p className="text-gray-700 font-medium max-w-3xl mx-auto text-base sm:text-lg">
-          For more information regarding service design, training components, and implementation structure, contact BTSLI™ to schedule a consultation.
+          For more information regarding service design, implementation structure, procurement fit, or training components, contact BTSLI™ to schedule a consultation.
         </p>
       </div>
 
@@ -159,31 +185,43 @@ export default function ServicesPage() {
       <section className="card bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none">
         <h2 className="text-3xl font-bold mb-4 text-center">Our Three Core Differentiators</h2>
         <p className="text-center text-blue-100 mb-10 max-w-3xl mx-auto text-lg">
-          Our work is grounded in three core differentiators that drive measurable outcomes:
+          What makes BTSLI™ different is not just what we deliver, but how we design systems for clarity,
+          consistency, and measurable outcomes.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
             <h3 className="text-xl font-bold mb-3">Execution-First Performance Alignment™</h3>
             <p className="text-blue-100 text-sm leading-relaxed">
-              Transforms expectations into consistent practice through clarity, alignment, and structured follow-through.
+              Converts expectations into repeatable practice through role clarity, aligned communication, and structured follow-through.
             </p>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
             <h3 className="text-xl font-bold mb-3">Behavioral Systems Advantage™</h3>
             <p className="text-blue-100 text-sm leading-relaxed">
-              Strengthens the system so performance is less dependent on individuals and more embedded within routines, 
-              communication patterns, and workflows.
+              Strengthens the system so performance is embedded within routines, workflows, accountability structures, and communication patterns—not dependent on individual personality alone.
             </p>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
             <h3 className="text-xl font-bold mb-3">Training-to-Implementation Continuum™</h3>
             <p className="text-blue-100 text-sm leading-relaxed">
-              Extends beyond training to support real-world application through structured implementation and follow-up support.
+              Extends beyond training to support real-world application through structured implementation, reinforcement, and measurable follow-up support.
             </p>
           </div>
+        </div>
+
+        <div className="mt-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 max-w-4xl mx-auto text-center">
+          <h3 className="text-2xl font-bold mb-3">Grounded in Academic Training and Applied Experience</h3>
+          <p className="text-blue-100 leading-relaxed text-lg">
+            BTSLI™'s methodology is informed by doctoral training in psychology, graduate clinical systems study,
+            behavioral science, applied behavior analysis, instructional design, and years of implementation work in
+            complex service and educational environments.
+          </p>
+          <p className="text-blue-100/90 leading-relaxed mt-3">
+            That is why organizations engage BTSLI™ as a systems-based consulting institute—not as a coach, speaker, or generic training vendor.
+          </p>
         </div>
       </section>
 
@@ -192,7 +230,7 @@ export default function ServicesPage() {
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Ready to Strengthen Your Organization's Performance?</h2>
         <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
           Contact BTSLI™ to schedule a consultation and learn how our structured, evidence-informed services 
-          can support your organization's goals.
+          can support your organization's goals, implementation priorities, and procurement requirements.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <a href="/schedule" className="px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xl font-bold rounded-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all">

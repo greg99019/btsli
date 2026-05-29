@@ -2,6 +2,8 @@
 import ConditionalHeader from '@/components/layout/ConditionalHeader';
 import ConditionalMain from '@/components/layout/ConditionalMain';
 
+const CAPABILITY_STATEMENT_PATH = '/btsli-capability-statement.pdf';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -30,12 +32,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <a href="/about" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a>
                   <a href="/overview" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Overview</a>
                   <a href="/services" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a>
-                  <a href="/intake" className="text-sm sm:text-base text-orange-600 hover:text-orange-700 font-semibold transition-colors">Assessment</a>
+                  <a href="/intake" className="text-sm sm:text-base text-orange-600 hover:text-orange-700 font-semibold transition-colors">Systems Fit Assessment</a>
                   <a href="/resources" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Resources</a>
+                  <a
+                    href={CAPABILITY_STATEMENT_PATH}
+                    download
+                    className="text-sm sm:text-base text-blue-700 hover:text-cyan-700 font-semibold transition-colors"
+                  >
+                    Capability Statement
+                  </a>
                   <a href="/dashboard" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Client Portal</a>
                   <a href="/login" className="text-sm sm:text-base text-gray-700 hover:text-blue-600 font-medium transition-colors">Login</a>
                   <a href="/intake" className="col-span-2 md:col-span-1 justify-self-center px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-medium hover:shadow-lg transition-all w-full sm:w-auto max-w-xs md:max-w-none">
-                    Get Started
+                    Start Assessment
                   </a>
                 </div>
               </div>
@@ -65,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <a href="/services" className="block hover:text-white transition-colors">Program Development</a>
                     <a href="/services" className="block hover:text-white transition-colors">Workforce Development</a>
                     <a href="/services" className="block hover:text-white transition-colors">Staff Training</a>
+                    <a href="/services/international" className="block hover:text-white transition-colors">International Services</a>
                   </div>
                 </div>
                 <div>
@@ -79,8 +89,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div>
                   <h3 className="text-lg font-bold mb-4">Get Started</h3>
                   <p className="text-blue-200 mb-3 text-sm">
-                    Ready to improve organizational performance?
+                    Ready to review organizational fit and next-step options?
                   </p>
+                  <a href={CAPABILITY_STATEMENT_PATH} download className="inline-block text-sm text-white underline underline-offset-4 hover:text-cyan-200 transition-colors mb-3">
+                    Download Capability Statement
+                  </a>
+                  <br />
                   <a href="/intake" className="inline-block px-5 py-2.5 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-lg transition-all text-sm">
                     Systems Fit Assessment
                   </a>
