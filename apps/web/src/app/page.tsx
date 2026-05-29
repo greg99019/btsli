@@ -573,10 +573,11 @@ export default function Home() {
           <div className="pt-2">
             <a
               href={CAPABILITY_STATEMENT_PATH}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all"
             >
-              Download Full Capability Statement
+              View Capability Statement
             </a>
           </div>
         </div>
