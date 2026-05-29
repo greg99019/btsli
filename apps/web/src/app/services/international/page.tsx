@@ -1,4 +1,19 @@
 export default function InternationalServicesPage() {
+  const colorStyles = {
+    blue: {
+      card: 'bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 hover:border-blue-400 transition-all',
+      accent: 'w-3 h-10 bg-gradient-to-b from-blue-600 to-cyan-500 rounded-full flex-shrink-0',
+      inner: 'bg-white rounded-lg p-5 border border-blue-100 mb-4',
+      bullet: 'text-blue-600 mt-0.5 flex-shrink-0',
+    },
+    cyan: {
+      card: 'bg-gradient-to-br from-cyan-50 to-white border-2 border-cyan-200 hover:border-cyan-400 transition-all',
+      accent: 'w-3 h-10 bg-gradient-to-b from-cyan-600 to-blue-500 rounded-full flex-shrink-0',
+      inner: 'bg-white rounded-lg p-5 border border-cyan-100 mb-4',
+      bullet: 'text-cyan-600 mt-0.5 flex-shrink-0',
+    },
+  } as const;
+
   const focusAreas = [
     {
       title: 'Child & Family Systems Strengthening',
@@ -265,28 +280,29 @@ export default function InternationalServicesPage() {
 
       {/* Focus Areas Grid */}
       <section className="grid md:grid-cols-2 gap-8">
-        {focusAreas.map((area) => (
+        {focusAreas.map((area) => {
+          const styles = colorStyles[area.color];
+
+          return (
           <div
             key={area.title}
-            className={`card bg-gradient-to-br from-${area.color}-50 to-white border-2 border-${area.color}-200 hover:border-${area.color}-400 transition-all`}
+            className={`card ${styles.card}`}
           >
             <div className="flex items-center gap-3 mb-4">
-              <div
-                className={`w-3 h-10 bg-gradient-to-b from-${area.color}-600 to-cyan-500 rounded-full flex-shrink-0`}
-              />
+              <div className={styles.accent} />
               <h3 className="text-xl font-bold text-gray-800">{area.title}</h3>
             </div>
 
             <p className="text-gray-700 leading-relaxed mb-4">{area.description}</p>
 
-            <div className={`bg-white rounded-lg p-5 border border-${area.color}-100 mb-4`}>
+            <div className={styles.inner}>
               <h4 className="font-bold text-gray-800 mb-3 text-sm uppercase tracking-wide">
                 Services may include:
               </h4>
               <ul className="space-y-1.5 text-gray-700">
                 {area.services.map((s) => (
                   <li key={s} className="flex items-start gap-2 text-sm">
-                    <span className={`text-${area.color}-600 mt-0.5 flex-shrink-0`}>•</span>
+                    <span className={styles.bullet}>•</span>
                     <span>{s}</span>
                   </li>
                 ))}
@@ -295,7 +311,8 @@ export default function InternationalServicesPage() {
 
             <p className="text-gray-600 text-sm italic leading-relaxed">{area.outcome}</p>
           </div>
-        ))}
+        );
+        })}
       </section>
 
       {/* How BTSLI Supports Partners */}
